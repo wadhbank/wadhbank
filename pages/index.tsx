@@ -14,6 +14,11 @@ export async function getServerSideProps() {
   }
 }
 
+export function formatDate(string){
+  var options = { year: 'numeric', month: 'long', day: 'numeric' };
+  return new Date(string).toLocaleDateString([]);
+}
+
 export default function Home({initialUsers}) {
   const [users, setUsers] = useState<Prisma.UserUncheckedCreateInput[]>(initialUsers)
   const [fullName, setFullName]= useState("")
@@ -24,7 +29,7 @@ export default function Home({initialUsers}) {
     e.preventDefault()
     const body: Prisma.UserCreateInput = {
       fullName,
-      email
+      email,
     }
 
     await fetcher("/api/create", {user: body});
@@ -54,9 +59,8 @@ export default function Home({initialUsers}) {
 
      {users.map((u, index)=>
      <div className="flex" key={index}>
-       <p>{u.fullName}| {u.email }</p>
+       <p>{u.fullName}| {u.email} | {formatDate(u.dateCreated)}</p>
      </div>
-      
      )}
       
     </div>
