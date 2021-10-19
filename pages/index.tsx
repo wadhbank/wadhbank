@@ -13,6 +13,11 @@ export async function getServerSideProps() {
   };
 }
 
+export function formatDate(string) {
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  return new Date(string).toLocaleDateString([]);
+}
+
 export default function Home({ initialUsers }) {
   const [users, setUsers] =
     useState<Prisma.UserUncheckedCreateInput[]>(initialUsers);
@@ -25,6 +30,7 @@ export default function Home({ initialUsers }) {
       fullName,
       email,
     };
+
     await fetcher("/api/create", { user: body });
     await setUsers([...users, body]);
     setFullName("");
@@ -57,9 +63,33 @@ export default function Home({ initialUsers }) {
       </form>
 
       {users.map((u, index) => (
+        <>
+          <div className="flex" key={index}>
+            <p>
+              {u.fullName}| {u.email}
+            </p>
+          </div>
+          <input
+            className="bg-white rounded-sm border border-indigo-700"
+            type="text"
+            onChange={(e) => setFullName(e.target.value)}
+            value={fullName}
+          />
+          <input
+            className="bg-white rounded-sm border border-indigo-700"
+            type="text"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+          />
+
+          <button>Submit</button>
+        </>
+      ))}
+
+      {users.map((u, index) => (
         <div className="flex" key={index}>
           <p>
-            {u.fullName}| {u.email}
+            {u.fullName}| {u.email} | {formatDate(u.dateCreated)}
           </p>
         </div>
       ))}
