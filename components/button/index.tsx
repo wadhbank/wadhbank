@@ -4,7 +4,7 @@ interface ButtonInterface {
   type?: "button" | "reset" | "submit";
   children?: any;
   onClick?: () => void;
-  className?: any;
+  className?: string | object;
 }
 
 const Index = (props: ButtonInterface) => {

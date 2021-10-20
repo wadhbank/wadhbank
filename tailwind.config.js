@@ -2,6 +2,14 @@ module.exports = {
   purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   darkMode: false, // or 'media' or 'class',
   theme: {
+    screens: {
+      xxl: "1440px",
+      xl: { max: "1439px" },
+      lg: { max: "1199px" },
+      md: { max: "919px" },
+      sm: { max: "767px" },
+      xs: { max: "576px" },
+    },
     fontSize: {
       "extra-small": "12px",
       small: "14px",
