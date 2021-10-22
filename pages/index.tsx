@@ -59,7 +59,7 @@ export default function Home({initialUsers}) {
 
      {users.map((u, index)=>
      <div className="flex" key={index}>
-       <p>{u.fullName}| {u.email} | {formatDate(u.dateCreated)}</p>
+       <p> {u.id} |{u.fullName}| {u.email} | {formatDate(u.dateCreated)}</p>
      </div>
      )}
       
