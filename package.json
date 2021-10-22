@@ -10,21 +10,28 @@
   },
   "dependencies": {
     "@prisma/client": "^3.2.1",
+    "@tailwindcss/typography": "^0.4.1",
     "@types/node": "^16.11.1",
     "@types/react": "^17.0.29",
     "babel-plugin-superjson-next": "^0.4.2",
     "next": "11.1.2",
-    "prisma": "^3.2.1",
+    "prisma": "^3.3.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "superjson": "^1.8.0",
     "typescript": "^4.4.4"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
     "autoprefixer": "^10.3.7",
-    "eslint": "8.0.0",
+    "babel-plugin-inline-react-svg": "^2.0.1",
+    "babel-plugin-styled-components": "^1.13.2",
+    "eslint": "^8.0.1",
     "eslint-config-next": "11.1.2",
+    "eslint-config-prettier": "^8.3.0",
     "postcss": "^8.3.9",
-    "tailwindcss": "^2.2.16"
+    "prettier": "^2.4.1",
+    "tailwindcss": "^2.2.16",
+    "tailwindcss-plugins": "^0.3.0"
   }
 }
