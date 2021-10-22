@@ -249,15 +249,12 @@ export default function Home({ initialUsers }) {
         );
       })}
 
-      {users.map((u, index) => {
-        return (
-          <div className="flex" key={index}>
-            <p>
-              {u.fullName}| {u.email} | {formatDate(u.dateCreated)}
-            </p>
-          </div>
-        );
-      })}
+     {users.map((u, index)=>
+     <div className="flex" key={index}>
+       <p> {u.id} |{u.fullName}| {u.email} | {formatDate(u.dateCreated)}</p>
+     </div>
+     )}
+      
     </div>
   );
 }
