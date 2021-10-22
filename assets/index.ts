@@ -44,3 +44,6 @@ export { default as ImageAIKMD } from "./images/aikmd.png";
 export { default as ImageBlackstone } from "./images/blackstone.png";
 export { default as ImageGeorgetownUniversity } from "./images/georgetown-university.png";
 export { default as ImageCentralFloridaUniversity } from "./images/university-central-florida.png";
+export { default as ImageLightCircleOrnament } from "./images/light-circle-ornament.png";
+export { default as ImageMap } from "./images/map.png";
+export { default as ImageLineOrnament } from "./images/line-ornament.png";

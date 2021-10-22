@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Button, Collapse, Header, Typography } from "../../components";
+import { Button, Collapse, Header } from "../../components";
 
 export default function Components() {
   return (
@@ -10,53 +10,27 @@ export default function Components() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <div className="h-full bg-black-40 px-40 py-20 flex flex-col gap-16">
+      <div className="h-full py-36 bg-black-40 px-40 flex flex-col gap-16">
         <div className="flex flex-col gap-2">
-          <Typography size="heading-1" weight="bold">
-            Font Heading H1
-          </Typography>
-          <Typography size="heading-5" weight="bold">
-            Font Heading H5
-          </Typography>
-          <Typography size="heading-6" weight="bold">
-            Font Heading H6
-          </Typography>
-          <Typography size="large" weight="bold">
-            Font Large Bold
-          </Typography>
-          <Typography size="large" weight="medium">
-            Font Large Medium
-          </Typography>
-          <Typography size="large" weight="regular">
-            Font Large Regular
-          </Typography>
-          <Typography size="normal" weight="bold">
-            Font Normal Bold
-          </Typography>
-          <Typography size="normal" weight="medium">
-            Font Normal Medium
-          </Typography>
-          <Typography size="normal" weight="regular">
-            Font Normal Regular
-          </Typography>
-          <Typography size="small" weight="bold">
-            Font Small Bold
-          </Typography>
-          <Typography size="small" weight="medium">
-            Font Small Medium
-          </Typography>
-          <Typography size="small" weight="regular">
-            Font Small Regular
-          </Typography>
-          <Typography size="extra-small" weight="bold">
-            Font Extra Small Bold
-          </Typography>
-          <Typography size="extra-small" weight="medium">
+          <div className="prose-heading-1">Font Heading H1</div>
+          <div className="prose-heading-5">Font Heading H5</div>
+          <div className="prose-heading-6">Font Heading H6</div>
+          <div className="prose-large-bold">Font Large Bold</div>
+          <div className="prose-large-medium">Font Large Medium</div>
+          <div className="prose-large-regular">Font Large Regular</div>
+          <div className="prose-normal-bold">Font Normal Bold</div>
+          <div className="prose-normal-medium">Font Normal Medium</div>
+          <div className="prose-normal-regular">Font Normal Regular</div>
+          <div className="prose-small-bold">Font Small Bold</div>
+          <div className="prose-small-medium">Font Small Medium</div>
+          <div className="prose-small-regular">Font Small Regular</div>
+          <div className="prose-extra-small-bold">Font Extra Small Bold</div>
+          <div className="prose-extra-small-medium">
             Font Extra Small Medium
-          </Typography>
-          <Typography size="extra-small" weight="regular">
+          </div>
+          <div className="prose-extra-small-regular">
             Font Extra Small Regular
-          </Typography>
+          </div>
         </div>
         <div className="flex flex-wrap flex-row items-center gap-2">
           <Button theme="primary" size="medium">

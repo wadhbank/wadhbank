@@ -10,15 +10,6 @@ module.exports = {
       sm: { max: "767px" },
       xs: { max: "576px" },
     },
-    fontSize: {
-      "extra-small": "12px",
-      small: "14px",
-      normal: "16px",
-      large: "20px",
-      "heading-6": "24px",
-      "heading-5": "32px",
-      "heading-1": "60px",
-    },
     fontWeight: {
       regular: 400,
       medium: 500,
@@ -28,6 +19,7 @@ module.exports = {
       150: "150%",
       125: "125%",
     },
+
     colors: {
       black: {
         100: "#111828",
@@ -60,23 +52,25 @@ module.exports = {
         10: "#F0F3FF",
       },
     },
-    gradients: (theme) => ({
-      "primary-base": [
-        "309.7deg",
-        theme("colors.blue.100"),
-        theme("colors.blue.70"),
-      ],
-      "primary-hover": [
-        "309.7deg",
-        theme("colors.blue.80"),
-        theme("colors.blue.60"),
-      ],
-      "primary-focus": [
-        "309.7deg",
-        theme("colors.blue.100"),
-        theme("colors.blue.80"),
-      ],
-    }),
+    gradients: (theme) => {
+      return {
+        "primary-base": [
+          "309.7deg",
+          theme("colors.blue.100"),
+          theme("colors.blue.70"),
+        ],
+        "primary-hover": [
+          "309.7deg",
+          theme("colors.blue.80"),
+          theme("colors.blue.60"),
+        ],
+        "primary-focus": [
+          "309.7deg",
+          theme("colors.blue.100"),
+          theme("colors.blue.80"),
+        ],
+      };
+    },
 
     extend: {
       transitionProperty: {
@@ -84,9 +78,134 @@ module.exports = {
       },
       padding: {
         14: "14px",
+        25: "100px",
+      },
+      width: {
+        120: "120%",
       },
       borderRadius: {
         10: "10px",
+      },
+      typography: {
+        "extra-small-regular": {
+          css: {
+            fontSize: "12px",
+            fontWeight: 400,
+            lineHeight: "150%",
+          },
+        },
+        "extra-small-medium": {
+          css: {
+            fontSize: "12px",
+            fontWeight: 500,
+            lineHeight: "150%",
+          },
+        },
+        "extra-small-bold": {
+          css: {
+            fontSize: "12px",
+            fontWeight: 700,
+            lineHeight: "125%",
+          },
+        },
+        "small-regular": {
+          css: {
+            fontSize: "14px",
+            fontWeight: 400,
+            lineHeight: "150%",
+          },
+        },
+        "small-medium": {
+          css: {
+            fontSize: "14px",
+            fontWeight: 500,
+            lineHeight: "150%",
+          },
+        },
+        "small-bold": {
+          css: {
+            fontSize: "14px",
+            fontWeight: 700,
+            lineHeight: "125%",
+          },
+        },
+        "normal-regular": {
+          css: {
+            fontSize: "16px",
+            fontWeight: 400,
+            lineHeight: "150%",
+          },
+        },
+        "normal-medium": {
+          css: {
+            fontSize: "16px",
+            fontWeight: 500,
+            lineHeight: "150%",
+          },
+        },
+        "normal-bold": {
+          css: {
+            fontSize: "16px",
+            fontWeight: 700,
+            lineHeight: "125%",
+          },
+        },
+        "large-regular": {
+          css: {
+            fontSize: "20px",
+            fontWeight: 400,
+            lineHeight: "150%",
+          },
+        },
+        "large-medium": {
+          css: {
+            fontSize: "20px",
+            fontWeight: 500,
+            lineHeight: "150%",
+          },
+        },
+        "large-bold": {
+          css: {
+            fontSize: "20px",
+            fontWeight: 700,
+            lineHeight: "125%",
+          },
+        },
+        "heading-6": {
+          css: {
+            fontSize: "24px",
+            fontWeight: 700,
+            lineHeight: "125%",
+          },
+        },
+        "heading-5": {
+          css: {
+            fontSize: "32px",
+            fontWeight: 700,
+            lineHeight: "125%",
+          },
+        },
+        "heading-4": {
+          css: {
+            fontSize: "40px",
+            fontWeight: 700,
+            lineHeight: "125%",
+          },
+        },
+        "heading-3": {
+          css: {
+            fontSize: "48px",
+            fontWeight: 700,
+            lineHeight: "125%",
+          },
+        },
+        "heading-1": {
+          css: {
+            fontSize: "60px",
+            fontWeight: 700,
+            lineHeight: "125%",
+          },
+        },
       },
     },
   },
@@ -103,5 +222,8 @@ module.exports = {
     ],
     gradients: ["hover", "active", "focus"],
   },
-  plugins: [require("tailwindcss-plugins/gradients")],
+  plugins: [
+    require("tailwindcss-plugins/gradients"),
+    require("@tailwindcss/typography"),
+  ],
 };

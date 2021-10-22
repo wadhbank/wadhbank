@@ -5,6 +5,20 @@
     "prettier" // Add "prettier" last. This will turn off eslint rules conflicting with prettier. This is not what will format our code.,
   ],
   "rules": {
-    "prefer-const": "error"
+    "prefer-const": "error",
+    "no-console": ["warn"],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/react-in-jsx-scope": "off",
+    "arrow-body-style": ["error", "always"],
+    "object-curly-newline": "off",
+    "comma-dangle": ["error", "only-multiline"],
+    "linebreak-style": "off",
+    "operator-linebreak": ["off"],
+    "no-param-reassign": 0,
+    "template-curly-spacing": "off",
+    "indent": "off",
+    "camelcase": ["error", { "properties": "never" }],
+    "import/no-cycle": [0]
   }
 }

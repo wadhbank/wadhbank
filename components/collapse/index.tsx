@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { IconChevronUp } from "../../assets";
-import { Typography } from "..";
 
 interface CollapseType {
   title?: string;
@@ -21,9 +20,7 @@ const Index = (props: CollapseType) => {
       className={`${className} flex flex-col p-6 border border-black-30 rounded-10`}
     >
       <div className="flex flex-row justify-between">
-        <Typography size="large" weight="medium">
-          {title}
-        </Typography>
+        <div className="prose-large-medium">{title}</div>
         <div aria-hidden="true" onClick={onExpandHandler}>
           <IconChevronUp
             className={`transform duration-300 ${
@@ -32,15 +29,13 @@ const Index = (props: CollapseType) => {
           />
         </div>
       </div>
-      <Typography
-        size="normal"
-        weight="regular"
-        className={`transition-all text-black-60 duration-300 ease-in-out overflow-hidden max-h-0 opacity-0 mt-0 ${
+      <div
+        className={`prose-normal-regular transition-all text-black-60 duration-300 ease-in-out overflow-hidden max-h-0 opacity-0 mt-0 ${
           expand ? "max-h-screen opacity-100 mt-3" : ""
         }`}
       >
         {content}
-      </Typography>
+      </div>
     </div>
   );
 };
