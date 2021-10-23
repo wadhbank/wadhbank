@@ -2,11 +2,16 @@ import { Prisma } from "prisma";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import SwiperCore, { Pagination, Navigation } from "swiper";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 import prisma from "../lib/prisma";
 import { fetcher } from "../utils/fetcher";
-import { Button, Header, Input } from "../components";
+import { Button, Header, Input, Swiper } from "../components";
 import {
+  IconArrowLeft,
   IconStar,
   ImageAIKMD,
   ImageBlackstone,
@@ -17,6 +22,10 @@ import {
   ImageLineOrnament,
   ImageMap,
 } from "../assets";
+import { advantagesList } from "../configs/content";
+
+SwiperCore.use([Pagination]);
+SwiperCore.use([Navigation]);
 
 export async function getServerSideProps() {
   const users: Prisma.UserUncheckedCreateInput[] = await prisma.user.findMany();
@@ -35,6 +44,8 @@ export default function Home({ initialUsers }) {
     useState<Prisma.UserUncheckedCreateInput[]>(initialUsers);
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
+  const prevSlideBtn = useRef(null);
+  const nextSlideBtn = useRef(null);
 
   const formHandle = async (e) => {
     e.preventDefault();
@@ -132,74 +143,151 @@ export default function Home({ initialUsers }) {
           </div>
         </div>
       </div>
-      <div className="min-h-screen md:min-h-full bg-primary-base grid overflow-hidden relative">
-        <div className="flex sm:flex-col flex-row md:px-0 md:py-10 pl-20 py-28 gap-10 justify-between ">
-          <div className="flex flex-col md:gap-8 md:px-4 gap-10 relative sm:w-full w-6/12">
-            <div className="grid md:gap-5 gap-8">
-              <div className="lg:prose-heading-5 prose-heading-1 text-white-100 z-10">
-                The easiest-way to bank riba-free for all your banking needs.
+      <div className="flex flex-col w-full bg-primary-base">
+        <div className="min-h-screen md:min-h-full grid overflow-hidden relative">
+          <div className="flex sm:flex-col flex-row md:px-0 md:py-10 pl-20 py-28 gap-10 justify-between ">
+            <div className="flex flex-col md:gap-8 md:px-4 gap-10 relative sm:w-full w-6/12">
+              <div className="grid md:gap-5 gap-8">
+                <div className="lg:prose-heading-5 prose-heading-1 text-white-100 z-10">
+                  The easiest-way to bank riba-free for all your banking needs.
+                </div>
+                <div className="prose-small-regular text-white-100 z-10 xs:pr-2">
+                  With WadhBank, you can bank everywhere around the world just
+                  using our mobile platform.
+                </div>
+                <div className="z-0 absolute grid sm:w-48 sm:h-48 w-full h-full -top-1/3 md:top-0">
+                  <Image
+                    src={ImageLightCircleOrnament}
+                    alt="light-circle-ornament"
+                    layout="responsive"
+                    height="50vh"
+                    width="50vw"
+                  />
+                </div>
               </div>
-              <div className="prose-small-regular text-white-100 z-10 xs:pr-2">
-                With WadhBank, you can bank everywhere around the world just
-                using our mobile platform.
+              <div className="z-10">
+                <Button
+                  theme="secondary"
+                  size="medium"
+                  className="px-6 py-5 xs:py-4 xs:prose-small-bold"
+                >
+                  Get to know more about WadhBank
+                </Button>
               </div>
-              <div className="z-0 absolute grid sm:w-48 sm:h-48 w-full h-full -top-1/3 md:top-0">
+            </div>
+            <div
+              style={{ minHeight: "35vh" }}
+              className="flex flex-col md:gap-7 md:pl-4 gap-16 z-10 relative sm:w-full w-5/12 md:mt-0 md:transform-none transform translate-y-1/4 "
+            >
+              <div className="flex flex-col md:gap-3 gap-4 pr-20 md:pr-0 xs:w-7/12">
+                <div className="md:prose-heading-5 prose-heading-1 z-10 text-white-100">
+                  1.5K+
+                </div>
+                <div className="md:prose-small-regular prose-heading-6 font-regular text-white-80">
+                  Excited waitlisted customers around the world
+                </div>
+              </div>
+              <div className="flex flex-col md:gap-3 gap-4 pr-20 md:pr-0 xs:w-7/12">
+                <div className="md:prose-heading-5 prose-heading-1  z-10 text-white-100">
+                  150+
+                </div>
+                <div className="md:prose-small-regular prose-heading-6 font-regular text-white-80">
+                  Years of advisory board experience
+                </div>
+              </div>
+              <div className="z-0 absolute sm:left-1/3 -left-1/3 grid md:h-full h-4/6">
                 <Image
-                  src={ImageLightCircleOrnament}
+                  src={ImageMap}
                   alt="light-circle-ornament"
-                  layout="responsive"
-                  height="50vh"
-                  width="50vw"
+                  layout="intrinsic"
+                  objectFit="cover"
+                  objectPosition="left"
                 />
               </div>
             </div>
-            <div className="z-10">
-              <Button
-                theme="secondary"
-                size="medium"
-                className="px-6 py-5 xs:py-4 xs:prose-small-bold"
-              >
-                Get to know more about WadhBank
-              </Button>
-            </div>
           </div>
-          <div
-            style={{ minHeight: "35vh" }}
-            className="flex flex-col md:gap-7 md:pl-4 gap-16 z-10 relative sm:w-full w-5/12 md:mt-0 md:transform-none transform translate-y-1/4 "
-          >
-            <div className="flex flex-col md:gap-3 gap-4 pr-20 md:pr-0 xs:w-7/12">
-              <div className="md:prose-heading-5 prose-heading-1 z-10 text-white-100">
-                1.5K+
-              </div>
-              <div className="md:prose-small-regular prose-heading-6 font-regular text-white-80">
-                Excited waitlisted customers around the world
-              </div>
-            </div>
-            <div className="flex flex-col md:gap-3 gap-4 pr-20 md:pr-0 xs:w-7/12">
-              <div className="md:prose-heading-5 prose-heading-1  z-10 text-white-100">
-                150+
-              </div>
-              <div className="md:prose-small-regular prose-heading-6 font-regular text-white-80">
-                Years of advisory board experience
-              </div>
-            </div>
-            <div className="z-0 absolute sm:left-1/3 -left-1/3 grid md:h-full h-4/6">
-              <Image
-                src={ImageMap}
-                alt="light-circle-ornament"
-                layout="intrinsic"
-                objectFit="cover"
-                objectPosition="left"
-              />
-            </div>
+          <div className="absolute w-full p-4 grid">
+            <Image src={ImageLineOrnament} alt="" layout="intrinsic" />
           </div>
         </div>
-        <div className="absolute w-full p-4 grid">
-          <Image src={ImageLineOrnament} alt="" layout="intrinsic" />
+        <div className="p-20">
+          <div className="flex flex-col gap-24 relative">
+            <div className="flex flex-row justify-between align-bottom">
+              <div className="sm:w-full w-6/12">
+                <div className="lg:prose-heading-5 prose-heading-1 text-white-100 z-10">
+                  Join with us and get the advantages
+                </div>
+              </div>
+              <div className="sm:w-full w-6/12 relative">
+                <div className="z-0 absolute grid w-full -top-full opacity-60">
+                  <Image
+                    src={ImageLightCircleOrnament}
+                    alt="light-circle-ornament"
+                    layout="responsive"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="h-96 z-20">
+              <div className="flex">
+                <div
+                  ref={prevSlideBtn}
+                  aria-hidden="true"
+                  className="text-white-100"
+                >
+                  <IconArrowLeft
+                    fill="#FFF"
+                    className="fill-current text-red-1"
+                  />
+                </div>
+                <div
+                  ref={nextSlideBtn}
+                  aria-hidden="true"
+                  className="text-white-100"
+                >
+                  Next
+                </div>
+              </div>
+              <Swiper
+                loop={true}
+                nextOnClick={nextSlideBtn}
+                prevOnClick={prevSlideBtn}
+                slidesPerView={4}
+                grid={{
+                  rows: 2,
+                }}
+                navigation={true}
+                spaceBetween={40}
+                pagination={{
+                  clickable: true,
+                }}
+                className="mySwiper"
+                dataSource={advantagesList}
+                renderItem={(item, index) => {
+                  const { icon: Icon } = item;
+                  return (
+                    <div key={index} className="flex flex-col gap-8">
+                      <div>
+                        <Icon />
+                      </div>
+                      <div className="flex flex-col gap-4 text-white-100">
+                        <div className="prose-heading-6 font-medium">
+                          {item?.label}
+                        </div>
+                        <div className="prose-small-regular">{item?.desc}</div>
+                      </div>
+                    </div>
+                  );
+                }}
+              />
+            </div>
+            <div className="absolute w-full p-4 grid">
+              <Image src={ImageLineOrnament} alt="" layout="intrinsic" />
+            </div>
+          </div>
         </div>
       </div>
       <form onSubmit={formHandle}>
-        <div className="flex "></div>
         <input
           className="bg-white rounded-sm border border-indigo-700"
           type="text"

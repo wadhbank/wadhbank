@@ -1,4 +1,8 @@
 {
   "presets": ["next/babel"],
-  "plugins": ["superjson-next", "inline-react-svg"]
+  "plugins": [
+    "superjson-next",
+    "inline-react-svg",
+    ["styled-components", { "ssr": true }]
+  ]
 }

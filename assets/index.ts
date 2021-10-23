@@ -47,3 +47,4 @@ export { default as ImageCentralFloridaUniversity } from "./images/university-ce
 export { default as ImageLightCircleOrnament } from "./images/light-circle-ornament.png";
 export { default as ImageMap } from "./images/map.png";
 export { default as ImageLineOrnament } from "./images/line-ornament.png";
+export { default as ImageLighterCircleOrnament } from "./images/lighter-circle-ornament.png";
