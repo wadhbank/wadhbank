@@ -1,46 +1,38 @@
-interface ButtonInterface {
-  theme?: "primary" | "secondary" | "default";
-  size?: "medium" | "small";
-  type?: "button" | "reset" | "submit";
-  children?: any;
-  onClick?: () => void;
-  className?: string | object;
-}
+import React from "react";
+import { ButtonProps } from "antd/lib/button";
+import ButtonAntd from "./style";
 
-const Index = (props: ButtonInterface) => {
-  const { theme, size, children, className, ...otherProps } = props;
-
-  const onGetThemes = () => {
-    switch (theme) {
-      case "primary":
-        return `text-white-100 bg-${theme}-base hover:bg-${theme}-hover active:bg-${theme}-focus`;
-      case "secondary":
-        return "text-white-100 bg-none border border-white-60 active:bg-white-10";
-      case "default":
-        return "text-blue-70 bg-white-100 border border-blue-70 hover:bg-blue-10 active:bg-blue-20";
-      default:
-        return "";
-    }
-  };
-
-  const onGetSizes = () => {
-    switch (size) {
-      case "medium":
-        return "py-5 px-6 text-normal font-bold";
-      case "small":
-        return "py-14 px-6 text-small font-bold";
-      default:
-        return "";
-    }
-  };
+const Button = (props: ButtonProps) => {
+  const {
+    className,
+    type,
+    children,
+    onClick,
+    size,
+    style,
+    disabled,
+    htmlType,
+    loading,
+  } = props;
 
   return (
-    <button
-      className={`${className} box-border transition-all duration-300 rounded-10 text ${onGetThemes()} ${onGetSizes()}`}
-      {...otherProps}
+    <ButtonAntd
+      className={
+        className ? `component_button ${className}` : "component_button"
+      }
+      loading={loading}
+      style={style || null}
+      disabled={disabled || false}
+      type={type || null}
+      onClick={onClick || null}
+      htmlType={htmlType || "button"}
+      size={size || null}
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      {...props}
     >
       {children}
-    </button>
+    </ButtonAntd>
   );
 };
-export default Index;
+
+export default Button;

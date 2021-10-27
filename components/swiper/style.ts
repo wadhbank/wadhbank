@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import breakpoints from "../../configs/breakpoints";
 
 const Wrapper = styled.div`
   overflow: visible;
@@ -18,6 +19,12 @@ const Wrapper = styled.div`
       &.swiper-pagination-bullet-active {
         opacity: 1;
       }
+    }
+  }
+
+  @media screen and (max-width: ${breakpoints.tab}) {
+    .swiper {
+      padding-bottom: 40px;
     }
   }
 `;

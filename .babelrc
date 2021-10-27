@@ -3,6 +3,7 @@
   "plugins": [
     "superjson-next",
     "inline-react-svg",
-    ["styled-components", { "ssr": true }]
+    ["styled-components", { "ssr": true }],
+    ["import", { "libraryName": "antd", "style": true }]
   ]
 }
