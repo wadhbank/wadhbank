@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { Prisma } from "prisma";
-import { Col, Row, Input } from "antd";
+import { Col, Row, Input, List } from "antd";
 import SwiperCore, { Pagination, Navigation } from "swiper";
 import { useMediaQuery } from "react-responsive";
 import Head from "next/head";
@@ -26,13 +26,15 @@ import {
   ImageLighterCircleOrnament,
   ImageLineOrnament,
   ImageMap,
+  ImageSkeletonCard,
 } from "../assets";
-import { advantagesList } from "../configs/content";
+import { advantagesList, invitationList } from "../configs/content";
 import {
   AboutAdvantageWrapper,
   AboutWrapper,
   AdvantageWrapper,
   HeroWrapper,
+  InvitationWrapper,
   Wrapper,
 } from "./index.style";
 import breakpoints from "../configs/breakpoints";
@@ -176,132 +178,182 @@ export default function Home({ initialUsers }) {
         </Row>
       </HeroWrapper>
       <AboutAdvantageWrapper>
-        <AboutWrapper>
-          <Row className="about_section_wrapper">
-            <Col className="container_about_base">
-              <Row className="component_about_base_row">
-                <Col span={24} className="component_about_base_title">
-                  The easiest-way to bank riba-free for all your banking needs.
-                </Col>
-                <Col span={24} className="component_about_base_subtitle">
-                  With WadhBank, you can bank everywhere around the world just
-                  using our mobile platform.
-                </Col>
-                <Col span={24} className="component_about_base_get_more">
-                  <Button type="text">Get to know more about WadhBank</Button>
-                </Col>
-              </Row>
-              <Col className="component_about_base_bg">
-                <Image
-                  src={ImageLightCircleOrnament}
-                  alt=""
-                  layout="intrinsic"
-                />
-              </Col>
-            </Col>
-            <Col className="container_about_advisory">
-              <Row
-                className="component_about_advisory_row"
-                justify="start"
-                wrap={false}
-              >
-                <Col>
-                  <Row className="component_about_advisor_content">
-                    <Col className="component_about_advisory_count">1.5K+</Col>
-                    <Col className="component_about_advisory_desc">
-                      Excited waitlisted customers around the world
-                    </Col>
-                  </Row>
-                </Col>
-                <Col>
-                  <Row className="component_about_advisor_content">
-                    <Col className="component_about_advisory_count">150+</Col>
-                    <Col className="component_about_advisory_desc">
-                      Years of advisory board experience
-                    </Col>
-                  </Row>
-                </Col>
-              </Row>
-              <Col className="component_about_advisory_bg">
-                <Image src={ImageMap} alt="card-podium" layout="intrinsic" />
-              </Col>
-            </Col>
-          </Row>
-        </AboutWrapper>
-        <AdvantageWrapper>
-          <Row className="advantage_section_wrapper">
-            <Col span={24} className="container_advantage_base">
-              <Row
-                justify="space-between"
-                wrap={false}
-                align="bottom"
-                className="component_advantage_base_row"
-              >
-                <Col span={24} className="component_advantage_base_title">
-                  Join with us and get the advantages
-                </Col>
-                <Col className="component_advantages_base_bg">
+        <Col className="about_advantage_section_Wrapper">
+          <AboutWrapper>
+            <Row className="about_section_wrapper">
+              <Col className="container_about_base">
+                <Row className="component_about_base_row">
+                  <Col span={24} className="component_about_base_title">
+                    The easiest-way to bank riba-free for all your banking
+                    needs.
+                  </Col>
+                  <Col span={24} className="component_about_base_subtitle">
+                    With WadhBank, you can bank everywhere around the world just
+                    using our mobile platform.
+                  </Col>
+                  <Col span={24} className="component_about_base_get_more">
+                    <Button type="text">Get to know more about WadhBank</Button>
+                  </Col>
+                </Row>
+                <Col className="component_about_base_bg">
                   <Image
-                    src={ImageLighterCircleOrnament}
+                    src={ImageLightCircleOrnament}
                     alt=""
                     layout="intrinsic"
                   />
                 </Col>
-                <Col className="component_advantage_base_slider_handler">
-                  <Row gutter={24} wrap={false} align="middle">
-                    <Col ref={prevSlideBtn}>
-                      <Button type="link">
-                        <IconArrowLeft />
-                      </Button>
-                    </Col>
-                    <Col ref={nextSlideBtn}>
-                      <Button type="link">
-                        <IconArrowRight />
-                      </Button>
-                    </Col>
-                  </Row>
-                </Col>
-              </Row>
-            </Col>
-            <Col className="container_advantage_slider">
-              <Swiper
-                {...onSliderHandler()}
-                loop={true}
-                spaceBetween={20}
-                nextOnClick={nextSlideBtn}
-                prevOnClick={prevSlideBtn}
-                navigation={true}
-                pagination={{
-                  clickable: true,
-                }}
-                dataSource={advantagesList}
-                renderItem={(item, index) => {
-                  return (
-                    <Row key={index} className="component_slider_item">
-                      <Col className="component_slider_item_icon">
-                        <Image title="icon" src={item?.icon} alt="" />
+              </Col>
+              <Col className="container_about_advisory">
+                <Row
+                  className="component_about_advisory_row"
+                  justify="start"
+                  wrap={false}
+                >
+                  <Col>
+                    <Row className="component_about_advisor_content">
+                      <Col className="component_about_advisory_count">
+                        1.5K+
                       </Col>
-                      <Col span={24}>
-                        <Row className="component_slider_item_text">
-                          <Col className="component_slider_item_text_title">
-                            {item?.label}
-                          </Col>
-                          <Col className="component_slider_item_text_desc">
-                            {item?.desc}
-                          </Col>
-                        </Row>
+                      <Col className="component_about_advisory_desc">
+                        Excited waitlisted customers around the world
                       </Col>
                     </Row>
-                  );
-                }}
-              />
-            </Col>
-          </Row>
-        </AdvantageWrapper>
-        <Col className="component_about_advantage_bg">
-          <Image src={ImageLineOrnament} alt="" layout="intrinsic" />
+                  </Col>
+                  <Col>
+                    <Row className="component_about_advisor_content">
+                      <Col className="component_about_advisory_count">150+</Col>
+                      <Col className="component_about_advisory_desc">
+                        Years of advisory board experience
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+                <Col className="component_about_advisory_bg">
+                  <Image src={ImageMap} alt="card-podium" layout="intrinsic" />
+                </Col>
+              </Col>
+            </Row>
+          </AboutWrapper>
+          <AdvantageWrapper>
+            <Row className="advantage_section_wrapper">
+              <Col span={24} className="container_advantage_base">
+                <Row
+                  justify="space-between"
+                  wrap={false}
+                  align="bottom"
+                  className="component_advantage_base_row"
+                >
+                  <Col span={24} className="component_advantage_base_title">
+                    Join with us and get the advantages
+                  </Col>
+                  <Col className="component_advantages_base_bg">
+                    <Image
+                      src={ImageLighterCircleOrnament}
+                      alt=""
+                      layout="intrinsic"
+                    />
+                  </Col>
+                  <Col className="component_advantage_base_slider_handler">
+                    <Row gutter={24} wrap={false} align="middle">
+                      <Col ref={prevSlideBtn}>
+                        <Button type="link">
+                          <IconArrowLeft />
+                        </Button>
+                      </Col>
+                      <Col ref={nextSlideBtn}>
+                        <Button type="link">
+                          <IconArrowRight />
+                        </Button>
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+              </Col>
+              <Col className="container_advantage_slider">
+                <Swiper
+                  {...onSliderHandler()}
+                  loop={true}
+                  spaceBetween={20}
+                  nextOnClick={nextSlideBtn}
+                  prevOnClick={prevSlideBtn}
+                  navigation={true}
+                  pagination={{
+                    clickable: true,
+                  }}
+                  dataSource={advantagesList}
+                  renderItem={(item, index) => {
+                    return (
+                      <Row key={index} className="component_slider_item">
+                        <Col className="component_slider_item_icon">
+                          <Image title="icon" src={item?.icon} alt="" />
+                        </Col>
+                        <Col span={24}>
+                          <Row className="component_slider_item_text">
+                            <Col className="component_slider_item_text_title">
+                              {item?.label}
+                            </Col>
+                            <Col className="component_slider_item_text_desc">
+                              {item?.desc}
+                            </Col>
+                          </Row>
+                        </Col>
+                      </Row>
+                    );
+                  }}
+                />
+              </Col>
+            </Row>
+          </AdvantageWrapper>
+          <Col className="component_about_advantage_bg">
+            <Image src={ImageLineOrnament} alt="" layout="intrinsic" />
+          </Col>
         </Col>
       </AboutAdvantageWrapper>
+      <InvitationWrapper>
+        <Row className="invitation_section_wrapper">
+          <Col span={24} className="container_invitation_heading">
+            <Row
+              align="middle"
+              wrap={false}
+              className="component_invitation_heading_row"
+            >
+              <Col span={24} className="component_invitation_heading_title">
+                Get ready to join WadhBank
+              </Col>
+              <Col span={24} className="component_invitation_heading_subtitle">
+                WadhBank is for those who want the best in latest in fintech
+                technologies and the strong traditions of Islamic finance. All
+                at your fingertips.
+              </Col>
+            </Row>
+          </Col>
+          <Col span={24} className="container_invitation_list">
+            <Row className="component_invitation_list_row">
+              <Col className="component_invitation_image">
+                <Image src={ImageSkeletonCard} alt="" layout="intrinsic" />
+              </Col>
+              <Col className="component_invitation_list">
+                <List
+                  itemLayout="horizontal"
+                  bordered={false}
+                  dataSource={invitationList}
+                  renderItem={(item) => {
+                    return (
+                      <List.Item key={item?.key}>
+                        <List.Item.Meta
+                          avatar={item?.key}
+                          title={item?.label}
+                          description={item?.desc}
+                        />
+                      </List.Item>
+                    );
+                  }}
+                />
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      </InvitationWrapper>
       <form onSubmit={formHandle}>
         <input
           className="bg-white rounded-sm border border-indigo-700"

@@ -76,3 +76,22 @@ export const advantagesList = [
     icon: IconVolunteer,
   },
 ];
+
+export const invitationList = [
+  {
+    key: "01",
+    label: `Choose the type of banking services based on your needs`,
+    desc: "Personal, Business, Student, and Private offerings will be available upon our launch.",
+  },
+  {
+    key: "02",
+    label: "Check your eligibility by entering a few personal details.",
+    desc: "We guarantee that your personal data is safe and will not be used for other purposes so that you can comfortably fill in your personal data.",
+  },
+  {
+    key: "03",
+    label:
+      "Sign up and join our waiting list instantly to get early access to our launch",
+    desc: "Once you register, you will get the right to using our services faster along with other benefits and advantages.",
+  },
+];

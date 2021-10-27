@@ -1,5 +1,5 @@
 import { Drawer } from "antd";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import breakpoints from "../../configs/breakpoints";
 import colors from "../../configs/colors";
 import fonts from "../../configs/fonts";
@@ -63,7 +63,7 @@ export const Wrapper = styled.div`
 
   @media screen and (max-width: ${breakpoints.tab_large}) {
     .container_header {
-      padding: 16px 18px;
+      padding: 16px 40px;
       .component_nav {
         display: none;
       }
@@ -78,7 +78,7 @@ export const Wrapper = styled.div`
 
   @media screen and (max-width: ${breakpoints.tab}) {
     .container_header {
-      padding: 16px 18px;
+      padding: 16px;
       .component_logo {
         width: 106px;
       }
@@ -108,18 +108,23 @@ export const Menus = styled(Drawer)`
   .ant-drawer-wrapper-body {
     height: auto;
     .ant-drawer-header {
-      padding: 23px 16px;
+      padding: 23px 40px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
       .ant-drawer-title {
-        width: 106px;
+        width: 141px;
         display: flex;
         align-items: center;
       }
       .ant-drawer-close {
         color: ${colors.black100};
+        position: relative;
+        padding: 0;
       }
     }
     .ant-drawer-body {
-      padding: 24px 16px;
+      padding: 24px 40px;
       height: auto;
       .component_nav_list {
         display: flex;
@@ -147,6 +152,54 @@ export const Menus = styled(Drawer)`
         .ant-btn {
           height: 50px;
           padding: 0 24px;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: ${breakpoints.tab}) {
+    .ant-drawer-wrapper-body {
+      height: auto;
+      .ant-drawer-header {
+        padding: 23px 16px;
+        .ant-drawer-title {
+          width: 106px;
+          display: flex;
+          align-items: center;
+        }
+        .ant-drawer-close {
+          color: ${colors.black100};
+        }
+      }
+      .ant-drawer-body {
+        padding: 24px 16px;
+        height: auto;
+        .component_nav_list {
+          display: flex;
+          flex-direction: column;
+          row-gap: 24px !important;
+          .component_nav_list_item {
+            width: 100%;
+            display: block;
+            a {
+              ${fonts.font_normal_medium};
+              color: ${colors.black60};
+              :hover {
+                color: ${colors.black100};
+              }
+            }
+            &.active a {
+              color: ${colors.black100};
+            }
+          }
+        }
+        .component_list_item_divider {
+          margin: 0;
+        }
+        .component_list_item_divider_button {
+          .ant-btn {
+            height: 50px;
+            padding: 0 24px;
+          }
         }
       }
     }
