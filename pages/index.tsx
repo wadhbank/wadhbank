@@ -400,6 +400,10 @@ export default function Home({ initialUsers }) {
               pagination={{
                 clickable: true,
               }}
+              autoplay={{
+                delay: 2400,
+                disableOnInteraction: false,
+              }}
               dataSource={testimonialList}
               renderItem={(item, index) => {
                 return (

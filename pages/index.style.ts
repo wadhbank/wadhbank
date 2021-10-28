@@ -83,18 +83,16 @@ export const HeroWrapper = styled.div`
           align-items: flex-start;
           grid-template-columns: 40% 40% 20%;
           max-width: 770px;
+          .ant-input {
+            height: 60px;
+            ${fonts.font_normal};
+          }
           > :first-child {
-            .ant-input {
-              height: 60px;
-            }
             .ant-form-item-control-input-content .ant-input {
               border-radius: 10px 0 0 10px;
             }
           }
           > :nth-child(2) {
-            .ant-input {
-              height: 60px;
-            }
             .ant-form-item-control-input-content .ant-input {
               border-radius: 0;
             }
@@ -104,6 +102,7 @@ export const HeroWrapper = styled.div`
           padding: 0 24px !important;
           height: 60px;
           border-radius: 0 10px 10px 0;
+          ${fonts.font_normal_bold};
         }
       }
     }
@@ -144,6 +143,10 @@ export const HeroWrapper = styled.div`
           .ant-btn {
             padding: 0 16px;
             height: 45px !important;
+            ${fonts.font_small_bold};
+          }
+          .ant-input {
+            ${fonts.font_small};
           }
         }
         .component_button {
@@ -348,7 +351,7 @@ export const AboutWrapper = styled.div`
           margin-bottom: 40px;
           ${fonts.font_normal};
           max-width: 460px;
-          color: ${colors.white80};
+          color: ${colors.white100};
           z-index: 10;
         }
         .component_about_base_get_more {
@@ -391,7 +394,7 @@ export const AboutWrapper = styled.div`
           }
           .component_about_advisory_desc {
             ${fonts.font_normal};
-            color: ${colors.white80};
+            color: ${colors.white100};
           }
         }
       }
@@ -528,7 +531,6 @@ export const AboutWrapper = styled.div`
           }
         }
         .component_about_advisory_bg {
-          /* bottom: 0; */
           top: 35%;
           left: -10%;
           transform: scale(0.8);
@@ -604,7 +606,7 @@ export const AdvantageWrapper = styled.div`
           }
           .component_slider_item_text_desc {
             ${fonts.font_normal};
-            color: ${colors.white80};
+            color: ${colors.white100};
           }
         }
       }
