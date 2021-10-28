@@ -1224,3 +1224,179 @@ export const TestimonialWrapper = styled.div`
     }
   }
 `;
+
+export const FAQWrapper = styled.div`
+  max-width: 1440px;
+  margin: 0 auto;
+  overflow: hidden;
+  .faq_section_wrapper {
+    padding-top: 128px;
+    padding-bottom: 60px;
+    .container_faq_heading {
+      margin-bottom: 80px;
+      padding: 0 80px;
+      .component_faq_heading_row {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-items: center;
+        .component_faq_heading_title {
+          ${fonts.font_heading_1}
+          color: ${colors.black100};
+          margin-bottom: 32px;
+        }
+        .component_faq_heading_subtitle {
+          ${fonts.font_normal};
+          color: ${colors.black100};
+          max-width: 836px;
+        }
+      }
+    }
+
+    .container_faq_list {
+      padding: 0 80px;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      .component_faq_collapse {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        flex: 1;
+        .component_faq_collapse_expand_icon {
+          transform: rotate(0deg);
+          transition: 0.3s ease-in-out;
+          position: relative;
+          order: 1;
+          right: 0;
+          &.active {
+            transform: rotate(180deg);
+          }
+          path {
+            fill: ${colors.black60};
+          }
+        }
+        .component_faq_collapse_panel {
+          height: fit-content;
+          border: 1px solid ${colors.black30};
+          border-radius: 10px;
+          padding: 24px;
+          .ant-collapse-header,
+          .ant-collapse-content-box {
+            padding: 0;
+          }
+          .ant-collapse-header {
+            ${fonts.font_large_medium};
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            ::before,
+            ::after {
+              display: none;
+            }
+          }
+          .ant-collapse-content-box {
+            padding-top: 12px;
+            ${fonts.font_normal};
+            color: ${colors.black60};
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: ${breakpoints.tab_large}) {
+    .faq_section_wrapper {
+      padding-top: 40px;
+      .container_faq_heading {
+        padding: 0 40px;
+        .component_faq_heading_row {
+          .component_faq_heading_title {
+            ${fonts.font_heading_4};
+          }
+        }
+      }
+      .container_faq_list {
+        padding: 0 40px;
+        gap: 20px;
+        .component_faq_collapse {
+          .component_faq_collapse_panel {
+            .ant-collapse-header {
+              ${fonts.font_normal_medium};
+            }
+            .ant-collapse-content-box {
+              ${fonts.font_small};
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: ${breakpoints.tab}) {
+    .faq_section_wrapper {
+      padding-bottom: 20px;
+      .container_faq_heading {
+        margin-bottom: 40px;
+        .component_faq_heading_row {
+          .component_faq_heading_title {
+            ${fonts.font_heading_5};
+            margin-bottom: 20px;
+          }
+          .component_faq_heading_subtitle {
+            ${fonts.font_small};
+          }
+        }
+      }
+      .container_faq_list {
+        padding: 0 16px;
+        gap: 12px;
+        flex-direction: column;
+        .component_faq_collapse {
+          .component_faq_collapse_panel {
+            .ant-collapse-header {
+              ${fonts.font_normal_medium};
+            }
+            .ant-collapse-content-box {
+              ${fonts.font_small};
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: ${breakpoints.phone}) {
+    .faq_section_wrapper {
+      .container_faq_heading {
+        margin-bottom: 40px;
+        .component_faq_heading_row {
+          .component_faq_heading_title {
+            ${fonts.font_heading_5};
+            margin-bottom: 20px;
+            max-width: 328px;
+          }
+          .component_faq_heading_subtitle {
+            ${fonts.font_small};
+            max-width: 328px;
+          }
+        }
+      }
+      .container_faq_list {
+        padding: 0 16px;
+        gap: 12px;
+        flex-direction: column;
+        .component_faq_collapse {
+          .component_faq_collapse_panel {
+            .ant-collapse-header {
+              ${fonts.font_small_medium};
+            }
+            .ant-collapse-content-box {
+              ${fonts.font_extra_small};
+            }
+          }
+        }
+      }
+    }
+  }
+`;

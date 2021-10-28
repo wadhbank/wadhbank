@@ -146,3 +146,36 @@ export const testimonialList = [
       "WadhBank has the intention of ensuring that individuals get the full barakah of their wealth. Islamic finance is empowering for those who do not want to chose between their financial well-being and their morals.",
   },
 ];
+
+export const FAQList = [
+  {
+    key: 1,
+    label: "What is WadhBank?",
+    desc: "WadhBank is a neo-banking platform that is designed to be completely digital and shariah compliant. Giving you interest-free and ethical banking options anytime and anywhere, regardless of your background or demographic.",
+  },
+  {
+    key: 2,
+    label: "What services will you be providing?",
+    desc: "We will be offering personal checking and savings, business lending and banking, student lending, and private banking services all interest-free (riba).",
+  },
+  {
+    key: 3,
+    label: "Is WadhBank secure?",
+    desc: "Yes. WadhBank uses the latest in blockchain technology to keep transactions safe, easy to access, and secure from all threats.",
+  },
+  {
+    key: 4,
+    label: "How much does it cost to use WadhBank?",
+    desc: "All of our basic checking services are completely free of charge. Our more specialized savings and investment accounts and services having up-front, transparent management fees ranging from 1% to 2.5%.",
+  },
+  {
+    key: 5,
+    label: "How do I sign up for WadhBank?",
+    desc: "It's simple! Just add your name and email to our waiting list to get early access to our launch.",
+  },
+  {
+    key: 6,
+    label: "Will this be available worlwide?",
+    desc: "Yes! InshaAllah we're gearing up for a Wadh World and you can sign up from anywhere for our waiting list. Once we launch, you can start banking with us. ",
+  },
+];

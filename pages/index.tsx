@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { Prisma } from "prisma";
-import { Col, Row, Input, List } from "antd";
+import { Col, Row, Input, List, Collapse } from "antd";
 import SwiperCore, { Pagination, Navigation } from "swiper";
 import { useMediaQuery } from "react-responsive";
 import Head from "next/head";
@@ -16,6 +16,7 @@ import { Header, Swiper, Form, Button } from "../components";
 import {
   IconArrowLeft,
   IconArrowRight,
+  IconChevronUp,
   IconFemale,
   IconMale,
   IconStar,
@@ -32,6 +33,7 @@ import {
 } from "../assets";
 import {
   advantagesList,
+  FAQList,
   invitationList,
   testimonialList,
 } from "../configs/content";
@@ -39,6 +41,7 @@ import {
   AboutAdvantageWrapper,
   AboutWrapper,
   AdvantageWrapper,
+  FAQWrapper,
   HeroWrapper,
   InvitationWrapper,
   TestimonialWrapper,
@@ -70,6 +73,7 @@ export default function Home({ initialUsers }) {
   const nextSlideBtn = useRef(null);
 
   const desktopScreen = useMediaQuery({ maxWidth: breakpoints.desktop });
+  const tabScreen = useMediaQuery({ maxWidth: breakpoints.tab });
   const phoneScreen = useMediaQuery({ maxWidth: breakpoints.phone });
 
   const formHandle = async (e) => {
@@ -89,6 +93,24 @@ export default function Home({ initialUsers }) {
     if (phoneScreen) return { slidesPerView: 2, slidesPerGroup: 2 };
     if (desktopScreen) return { slidesPerView: 3, slidesPerGroup: 3 };
     return { slidesPerView: 4, slidesPerGroup: 4 };
+  };
+
+  const onGetFaqList = () => {
+    const slicing = Math.ceil(FAQList.length / 2);
+    let firstHalf = [];
+    let secondHalf = [];
+    if (tabScreen) {
+      firstHalf = FAQList.slice(0, slicing);
+      secondHalf = FAQList.slice(-slicing);
+    } else {
+      firstHalf = FAQList.filter((item) => {
+        return item.key % 2 !== 0;
+      });
+      secondHalf = FAQList.filter((item) => {
+        return item.key % 2 === 0;
+      });
+    }
+    return [firstHalf, secondHalf];
   };
 
   return (
@@ -428,6 +450,58 @@ export default function Home({ initialUsers }) {
           <Image src={ImageLightCircleOrnament} alt="" layout="intrinsic" />
         </Col>
       </TestimonialWrapper>
+      <FAQWrapper>
+        <Row className="faq_section_wrapper">
+          <Col span={24} className="container_faq_heading">
+            <Row
+              align="middle"
+              wrap={false}
+              className="component_faq_heading_row"
+            >
+              <Col span={24} className="component_faq_heading_title">
+                Frequently Asked Question
+              </Col>
+              <Col span={24} className="component_faq_heading_subtitle">
+                We know you have some questions in mind, we’ve tried to list the
+                most important ones
+              </Col>
+            </Row>
+          </Col>
+          <Col span={24} className="container_faq_list">
+            {onGetFaqList().map((items, index) => {
+              return (
+                <Collapse
+                  key={index}
+                  className="component_faq_collapse"
+                  ghost
+                  expandIconPosition="right"
+                  expandIcon={({ isActive }) => {
+                    return (
+                      <IconChevronUp
+                        className={`component_faq_collapse_expand_icon ${
+                          isActive ? "active" : ""
+                        }`}
+                      />
+                    );
+                  }}
+                >
+                  {items.map((item) => {
+                    return (
+                      <Collapse.Panel
+                        header={item?.label}
+                        key={item?.key}
+                        className="component_faq_collapse_panel"
+                      >
+                        {item?.desc}
+                      </Collapse.Panel>
+                    );
+                  })}
+                </Collapse>
+              );
+            })}
+          </Col>
+        </Row>
+      </FAQWrapper>
       <form onSubmit={formHandle}>
         <input
           className="bg-white rounded-sm border border-indigo-700"
