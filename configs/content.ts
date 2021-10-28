@@ -95,3 +95,54 @@ export const invitationList = [
     desc: "Once you register, you will get the right to using our services faster along with other benefits and advantages.",
   },
 ];
+
+export const testimonialList = [
+  {
+    key: "1",
+    name: "Carlos H.",
+    origin: "Deliotte",
+    gender: "male",
+    testimonial:
+      "WadhBank brings together timeless values that are good for society and your finances, while blending it with the latest in revolutionary blockchain technology. I really believe WadhBank is the next big thing in modern fintech and banking.",
+  },
+  {
+    key: "2",
+    name: "Ahmed A.",
+    gender: "male",
+    origin: "University of Central Florida",
+    testimonial:
+      "WadhBank is changing the traditional banking by introducing and implementing core Halal values to the experience. I look forward to having their logo on my debit card one day!",
+  },
+  {
+    key: "3",
+    name: "Sarah I.",
+    gender: "female",
+    origin: "Former Rollins MSA President",
+    testimonial:
+      "WadhBank has the intention of ensuring that individuals get the full barakah of their wealth. Islamic finance is empowering for those who do not want to chose between their financial well-being and their morals.",
+  },
+  {
+    key: "4",
+    name: "Participant 4",
+    gender: "male",
+    origin: "Deliotte",
+    testimonial:
+      "WadhBank brings together timeless values that are good for society and your finances, while blending it with the latest in revolutionary blockchain technology. I really believe WadhBank is the next big thing in modern fintech and banking.",
+  },
+  {
+    key: "5",
+    name: "Participant 5",
+    gender: "male",
+    origin: "University of Central Florida",
+    testimonial:
+      "WadhBank is changing the traditional banking by introducing and implementing core Halal values to the experience. I look forward to having their logo on my debit card one day!",
+  },
+  {
+    key: "6",
+    name: "Participant 6",
+    gender: "female",
+    origin: "Former Rollins MSA President",
+    testimonial:
+      "WadhBank has the intention of ensuring that individuals get the full barakah of their wealth. Islamic finance is empowering for those who do not want to chose between their financial well-being and their morals.",
+  },
+];

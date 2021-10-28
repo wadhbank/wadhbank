@@ -16,6 +16,8 @@ import { Header, Swiper, Form, Button } from "../components";
 import {
   IconArrowLeft,
   IconArrowRight,
+  IconFemale,
+  IconMale,
   IconStar,
   ImageAIKMD,
   ImageBlackstone,
@@ -28,13 +30,18 @@ import {
   ImageMap,
   ImageSkeletonCard,
 } from "../assets";
-import { advantagesList, invitationList } from "../configs/content";
+import {
+  advantagesList,
+  invitationList,
+  testimonialList,
+} from "../configs/content";
 import {
   AboutAdvantageWrapper,
   AboutWrapper,
   AdvantageWrapper,
   HeroWrapper,
   InvitationWrapper,
+  TestimonialWrapper,
   Wrapper,
 } from "./index.style";
 import breakpoints from "../configs/breakpoints";
@@ -354,6 +361,73 @@ export default function Home({ initialUsers }) {
           </Col>
         </Row>
       </InvitationWrapper>
+      <TestimonialWrapper>
+        <Row justify="center" align="middle" className="container_testimonial">
+          <Col className="component_testimonial_title">
+            What people are saying about WadhBank
+          </Col>
+          <Col className="component_testimonial_slider">
+            <Swiper
+              slidesPerGroup={1}
+              slidesPerView="auto"
+              loop={true}
+              centeredSlides
+              nextOnClick={nextSlideBtn}
+              prevOnClick={prevSlideBtn}
+              navigation={true}
+              pagination={{
+                clickable: true,
+              }}
+              dataSource={testimonialList}
+              renderItem={(item, index) => {
+                return (
+                  <Col
+                    key={index}
+                    className="component_testimonial_slider_item"
+                  >
+                    <Row className="component_testimonial_slider_item_row">
+                      <Col className="component_testimonial_slider_item_desc">
+                        {`"${item?.testimonial}"`}
+                      </Col>
+                      <Col className="component_testimonial_slider_item_bio">
+                        <Row justify="start" align="middle" gutter={12} wrap>
+                          <Col className="component_testimonial_slider_item_bio_avatar">
+                            <Image
+                              src={
+                                item?.gender === "male" ? IconMale : IconFemale
+                              }
+                              alt="avatar"
+                            />
+                          </Col>
+                          <Col className="component_testimonial_slider_item_bio_text">
+                            <Row className="component_testimonial_slider_item_bio_text_row">
+                              <Col
+                                span={24}
+                                className="component_testimonial_slider_item_bio_name"
+                              >
+                                {item?.name}
+                              </Col>
+                              <Col
+                                span={24}
+                                className="component_testimonial_slider_item_bio_origin"
+                              >
+                                {item?.origin}
+                              </Col>
+                            </Row>
+                          </Col>
+                        </Row>
+                      </Col>
+                    </Row>
+                  </Col>
+                );
+              }}
+            />
+          </Col>
+        </Row>
+        <Col className="component_testimonial_base_bg">
+          <Image src={ImageLightCircleOrnament} alt="" layout="intrinsic" />
+        </Col>
+      </TestimonialWrapper>
       <form onSubmit={formHandle}>
         <input
           className="bg-white rounded-sm border border-indigo-700"

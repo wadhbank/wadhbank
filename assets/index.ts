@@ -48,3 +48,5 @@ export { default as ImageLightCircleOrnament } from "./images/light-circle-ornam
 export { default as ImageMap } from "./images/map.png";
 export { default as ImageLineOrnament } from "./images/line-ornament.png";
 export { default as ImageLighterCircleOrnament } from "./images/lighter-circle-ornament.png";
+export { default as IconMale } from "./icons/male.png";
+export { default as IconFemale } from "./icons/female.png";
