@@ -16,6 +16,7 @@ import { Header, Swiper, Form, Button } from "../components";
 import {
   IconArrowLeft,
   IconArrowRight,
+  IconCheck,
   IconChevronUp,
   IconFemale,
   IconMale,
@@ -41,7 +42,9 @@ import {
   AboutAdvantageWrapper,
   AboutWrapper,
   AdvantageWrapper,
+  CTAWrapper,
   FAQWrapper,
+  FormWrapper,
   HeroWrapper,
   InvitationWrapper,
   TestimonialWrapper,
@@ -151,25 +154,27 @@ export default function Home({ initialUsers }) {
                 </Link>
               </Col>
               <Col span={24} className="component_form">
-                <Form>
-                  <Row className="component_form_row">
-                    <Col span={24}>
-                      <Form.Item name="name">
-                        <Input placeholder="Full name" />
-                      </Form.Item>
-                    </Col>
-                    <Col span={24}>
-                      <Form.Item name="email">
-                        <Input placeholder="Email" />
-                      </Form.Item>
-                    </Col>
-                    <Col span={24}>
-                      <Button block type="primary" size="middle">
-                        Sign Up
-                      </Button>
-                    </Col>
-                  </Row>
-                </Form>
+                <FormWrapper className="cta_form_wrapper">
+                  <Form>
+                    <Row className="component_form_row">
+                      <Col span={24}>
+                        <Form.Item name="name">
+                          <Input placeholder="Full name" />
+                        </Form.Item>
+                      </Col>
+                      <Col span={24}>
+                        <Form.Item name="email">
+                          <Input placeholder="Email" />
+                        </Form.Item>
+                      </Col>
+                      <Col span={24}>
+                        <Button block type="primary" size="middle">
+                          Sign Up
+                        </Button>
+                      </Col>
+                    </Row>
+                  </Form>
+                </FormWrapper>
               </Col>
               <Col span={24}>
                 <Row align="middle" className="component_sponsor">
@@ -506,7 +511,72 @@ export default function Home({ initialUsers }) {
           </Col>
         </Row>
       </FAQWrapper>
-      <form onSubmit={formHandle}>
+      <CTAWrapper>
+        <Row className="cta_section_wrapper">
+          <Col span={24} className="container_cta_heading">
+            <Row
+              align="middle"
+              wrap={false}
+              className="component_cta_heading_row"
+            >
+              <Col span={24} className="component_cta_heading_title">
+                Join our waiting list
+              </Col>
+              <Col span={24} className="component_cta_heading_subtitle">
+                Get advantages and early access to WadhBank right now
+              </Col>
+            </Row>
+          </Col>
+          <Col span={24} className="container_cta_list">
+            <FormWrapper className="cta_form_wrapper">
+              <Form>
+                <Row className="component_form_row">
+                  <Col span={24}>
+                    <Form.Item name="name">
+                      <Input placeholder="Full name" />
+                    </Form.Item>
+                  </Col>
+                  <Col span={24}>
+                    <Form.Item name="email">
+                      <Input placeholder="Email" />
+                    </Form.Item>
+                  </Col>
+                  <Col span={24}>
+                    <Button block type="primary" size="middle">
+                      Sign Up
+                    </Button>
+                  </Col>
+                </Row>
+              </Form>
+            </FormWrapper>
+          </Col>
+          <Col span={24} className="component_cta_benefit">
+            <Row className="component_cta_benefit_row">
+              <Col>
+                <Row gutter={8} align="middle" wrap>
+                  <Col className="component_cta_benefit_icon">
+                    <IconCheck viewBox="0 0 20 20" />
+                  </Col>
+                  <Col className="component_cta_benefit_label">
+                    Early access to use WadhBank
+                  </Col>
+                </Row>
+              </Col>
+              <Col>
+                <Row gutter={8} align="middle" wrap>
+                  <Col className="component_cta_benefit_icon">
+                    <IconCheck viewBox="0 0 20 20" />
+                  </Col>
+                  <Col className="component_cta_benefit_label">
+                    Special promo for early access user
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      </CTAWrapper>
+      {/* <form onSubmit={formHandle}>
         <input
           className="bg-white rounded-sm border border-indigo-700"
           type="text"
@@ -564,7 +634,7 @@ export default function Home({ initialUsers }) {
             </p>
           </div>
         );
-      })}
+      })} */}
     </Wrapper>
   );
 }

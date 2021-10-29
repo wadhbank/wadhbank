@@ -78,7 +78,7 @@ export const HeroWrapper = styled.div`
       }
       .component_form {
         margin-bottom: 32px;
-        .component_form_row {
+        /* .component_form_row {
           display: grid;
           align-items: flex-start;
           grid-template-columns: 40% 40% 20%;
@@ -97,13 +97,13 @@ export const HeroWrapper = styled.div`
               border-radius: 0;
             }
           }
-        }
-        .component_button {
+        } */
+        /* .component_button {
           padding: 0 24px !important;
           height: 60px;
           border-radius: 0 10px 10px 0;
           ${fonts.font_normal_bold};
-        }
+        } */
       }
     }
 
@@ -131,7 +131,7 @@ export const HeroWrapper = styled.div`
 
       .component_form {
         margin-bottom: 32px;
-        .component_form_row {
+        /* .component_form_row {
           display: flex;
           row-gap: 8px !important;
           .ant-input,
@@ -152,7 +152,7 @@ export const HeroWrapper = styled.div`
         .component_button {
           padding: 0 24px !important;
           height: 45px;
-        }
+        } */
       }
     }
 
@@ -182,7 +182,7 @@ export const HeroWrapper = styled.div`
       }
       .component_form {
         margin-bottom: 32px;
-        .component_form_row {
+        /* .component_form_row {
           display: grid;
           align-items: flex-start;
           grid-template-columns: 40% 40% 20%;
@@ -208,7 +208,7 @@ export const HeroWrapper = styled.div`
           padding: 0 24px !important;
           height: 60px;
           border-radius: 0 10px 10px 0;
-        }
+        } */
       }
     }
 
@@ -238,7 +238,7 @@ export const HeroWrapper = styled.div`
       }
       .component_form {
         margin-bottom: 100px;
-        .component_form_row {
+        /* .component_form_row {
           display: grid;
           align-items: flex-start;
           grid-template-columns: 40% 40% 20%;
@@ -264,7 +264,7 @@ export const HeroWrapper = styled.div`
           padding: 0 24px !important;
           height: 60px;
           border-radius: 0 10px 10px 0;
-        }
+        } */
       }
     }
   }
@@ -300,6 +300,123 @@ export const HeroWrapper = styled.div`
       height: 90%;
       bottom: 0;
       right: 30px;
+    }
+  }
+`;
+
+export const FormWrapper = styled.div`
+  .component_form_row {
+    max-width: 770px;
+    display: grid;
+    align-items: flex-start;
+    grid-template-columns: 40% 40% 20%;
+    > :first-child {
+      .ant-input {
+        height: 60px;
+      }
+      .ant-form-item-control-input-content .ant-input {
+        border-radius: 10px 0 0 10px;
+      }
+    }
+    > :nth-child(2) {
+      .ant-input {
+        height: 60px;
+      }
+      .ant-form-item-control-input-content .ant-input {
+        border-radius: 0;
+      }
+    }
+  }
+  .component_button {
+    padding: 0 24px !important;
+    height: 60px;
+    border-radius: 0 10px 10px 0;
+  }
+
+  @media screen and (max-width: ${breakpoints.desktop}) {
+    margin-bottom: 32px;
+    .component_form_row {
+      display: grid;
+      align-items: flex-start;
+      grid-template-columns: 40% 40% 20%;
+      max-width: 770px;
+      > :first-child {
+        .ant-input {
+          height: 60px;
+        }
+        .ant-form-item-control-input-content .ant-input {
+          border-radius: 10px 0 0 10px;
+        }
+      }
+      > :nth-child(2) {
+        .ant-input {
+          height: 60px;
+        }
+        .ant-form-item-control-input-content .ant-input {
+          border-radius: 0;
+        }
+      }
+    }
+    .component_button {
+      padding: 0 24px !important;
+      height: 60px;
+      border-radius: 0 10px 10px 0;
+    }
+  }
+
+  @media screen and (max-width: ${breakpoints.tab_large}) {
+    margin-bottom: 32px;
+    .component_form_row {
+      display: grid;
+      align-items: flex-start;
+      grid-template-columns: 40% 40% 20%;
+      max-width: 770px;
+      .ant-input {
+        height: 60px;
+        ${fonts.font_normal};
+      }
+      > :first-child {
+        .ant-form-item-control-input-content .ant-input {
+          border-radius: 10px 0 0 10px;
+        }
+      }
+      > :nth-child(2) {
+        .ant-form-item-control-input-content .ant-input {
+          border-radius: 0;
+        }
+      }
+    }
+    .component_button {
+      padding: 0 24px !important;
+      height: 60px;
+      border-radius: 0 10px 10px 0;
+      ${fonts.font_normal_bold};
+    }
+  }
+
+  @media screen and (max-width: ${breakpoints.tab}) {
+    margin-bottom: 32px;
+    .component_form_row {
+      display: flex;
+      row-gap: 8px !important;
+      .ant-input,
+      .ant-btn {
+        padding: 0 16px;
+        height: 45px !important;
+        border-radius: 10px !important;
+      }
+      .ant-btn {
+        padding: 0 16px;
+        height: 45px !important;
+        ${fonts.font_small_bold};
+      }
+      .ant-input {
+        ${fonts.font_small};
+      }
+    }
+    .component_button {
+      padding: 0 24px !important;
+      height: 45px;
     }
   }
 `;
@@ -1243,7 +1360,7 @@ export const FAQWrapper = styled.div`
         text-align: center;
         justify-items: center;
         .component_faq_heading_title {
-          ${fonts.font_heading_1}
+          ${fonts.font_heading_1};
           color: ${colors.black100};
           margin-bottom: 32px;
         }
@@ -1396,6 +1513,120 @@ export const FAQWrapper = styled.div`
             .ant-collapse-content-box {
               ${fonts.font_extra_small};
             }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const CTAWrapper = styled.div`
+  max-width: 1440px;
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 60px 80px;
+  .cta_section_wrapper {
+    padding: 80px 0;
+    background-color: ${colors.blue10};
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px 0px #1118280f;
+    .container_cta_heading {
+      margin-bottom: 40px;
+      .component_cta_heading_row {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-items: center;
+        .component_cta_heading_title {
+          ${fonts.font_heading_1}
+          color: ${colors.black100};
+          margin-bottom: 32px;
+        }
+        .component_cta_heading_subtitle {
+          ${fonts.font_normal};
+          color: ${colors.black100};
+          max-width: 836px;
+        }
+      }
+    }
+
+    .container_cta_list {
+      gap: 40px;
+      .cta_form_wrapper {
+        margin: 0 auto;
+        max-width: 770px;
+      }
+    }
+    .component_cta_benefit {
+      margin-top: 36px;
+      .component_cta_benefit_row {
+        display: flex;
+        justify-content: center;
+        column-gap: 40px !important;
+        .component_cta_benefit_icon svg {
+          height: 24px;
+          width: 24px;
+        }
+        .component_cta_benefit_label {
+          ${fonts.font_large};
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: ${breakpoints.tab_large}) {
+    padding: 40px;
+    .cta_section_wrapper {
+      padding: 40px 0;
+      .container_cta_heading {
+        .component_cta_heading_row {
+          .component_cta_heading_title {
+            ${fonts.font_heading_4};
+          }
+        }
+      }
+      .container_cta_list {
+        padding: 0 40px;
+        gap: 20px;
+      }
+    }
+  }
+
+  @media screen and (max-width: ${breakpoints.tab}) {
+    padding: 40px 20px;
+    .cta_section_wrapper {
+      padding-bottom: 28px;
+      .container_cta_heading {
+        margin-bottom: 24px;
+        .component_cta_heading_row {
+          justify-content: center;
+          .component_cta_heading_title {
+            ${fonts.font_heading_5};
+            margin-bottom: 20px;
+          }
+          .component_cta_heading_subtitle {
+            ${fonts.font_small};
+            max-width: 240px;
+          }
+        }
+      }
+      .container_cta_list {
+        padding: 0 16px;
+        gap: 12px;
+        flex-direction: column;
+      }
+      .component_cta_benefit {
+        margin-top: 28px;
+        .component_cta_benefit_row {
+          flex-direction: column;
+          align-items: center;
+          row-gap: 16px !important;
+          .component_cta_benefit_icon svg {
+            height: 20px;
+            width: 20px;
+          }
+          .component_cta_benefit_label {
+            ${fonts.font_small};
           }
         }
       }
