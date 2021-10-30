@@ -36,6 +36,10 @@ const Form: typeof FormAntd = styled(FormAntd)<FormProps>`
       }
     }
   }
+
+  .ant-form-item-explain.ant-form-item-explain-error {
+    margin-top: 12px !important;
+  }
 `;
 
 export default Form;
