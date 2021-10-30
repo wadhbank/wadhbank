@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { Prisma } from "prisma";
-import { Col, Row, Input, List, Collapse } from "antd";
+import { Col, Row, Input, List, Collapse, Divider } from "antd";
 import SwiperCore, { Pagination, Navigation } from "swiper";
 import { useMediaQuery } from "react-responsive";
 import Head from "next/head";
@@ -18,9 +18,16 @@ import {
   IconArrowRight,
   IconCheck,
   IconChevronUp,
+  IconFacebook,
   IconFemale,
+  IconInstagram,
+  IconLinkedin,
+  IconMail,
   IconMale,
+  IconPhone,
   IconStar,
+  IconTiktok,
+  IconTwitter,
   ImageAIKMD,
   ImageBlackstone,
   ImageCardPodium,
@@ -31,6 +38,7 @@ import {
   ImageLineOrnament,
   ImageMap,
   ImageSkeletonCard,
+  ImageWadhbank,
 } from "../assets";
 import {
   advantagesList,
@@ -44,6 +52,7 @@ import {
   AdvantageWrapper,
   CTAWrapper,
   FAQWrapper,
+  FooterWrapper,
   FormWrapper,
   HeroWrapper,
   InvitationWrapper,
@@ -576,6 +585,233 @@ export default function Home({ initialUsers }) {
           </Col>
         </Row>
       </CTAWrapper>
+      <FooterWrapper>
+        <Row className="footer_wrapper">
+          <Col span={24} className="container_footer_primary">
+            <Row className="container_footer_primary_row">
+              <Col className="component_footer_main">
+                <Row className="component_footer_main_row">
+                  <Col className="component_footer_base">
+                    <Row className="component_footer_base_row">
+                      <Col className="component_footer_base_logo">
+                        <Row className="component_footer_base_logo_row">
+                          <Col className="component_footer_base_logo_image">
+                            <Image src={ImageWadhbank} alt="wadhbank" />
+                          </Col>
+                          <Col className="component_footer_base_logo_tagline">
+                            Digital halal banking made for everyone
+                          </Col>
+                        </Row>
+                      </Col>
+                      <Col className="component_footer_base_contact">
+                        <Row className="component_footer_base_contact_row">
+                          <Col className="component_footer_base_contact_content">
+                            <Row
+                              gutter={8}
+                              wrap
+                              align="bottom"
+                              className="component_footer_base_contact_content_row"
+                            >
+                              <Col className="component_footer_base_contact_content_icon">
+                                <IconMail viewBox="0 0 20 20" />
+                              </Col>
+                              <Col className="component_footer_base_contact_content_label">
+                                hello@wadhbank.com
+                              </Col>
+                            </Row>
+                          </Col>
+                          <Col className="component_footer_base_contact_content">
+                            <Row
+                              gutter={8}
+                              wrap
+                              align="bottom"
+                              className="component_footer_base_contact_content_row"
+                            >
+                              <Col className="component_footer_base_contact_content_icon">
+                                <IconPhone viewBox="0 0 20 20" />
+                              </Col>
+                              <Col className="component_footer_base_contact_content_label">
+                                646-397-9255
+                              </Col>
+                            </Row>
+                          </Col>
+                        </Row>
+                      </Col>
+                      <Col className="component_footer_base_social_media">
+                        <Row
+                          gutter={[16, 16]}
+                          wrap
+                          className="component_footer_base_social_media_row"
+                        >
+                          <Col
+                            span={24}
+                            className="component_footer_base_social_media_follow"
+                          >
+                            Follow our social media
+                          </Col>
+                          <Col
+                            span={24}
+                            className="component_footer_base_social_media_list"
+                          >
+                            <IconInstagram />
+                            <IconFacebook />
+                            <IconTwitter />
+                            <IconLinkedin />
+                            <IconTiktok />
+                          </Col>
+                        </Row>
+                      </Col>
+                    </Row>
+                  </Col>
+                  <Col className="component_footer_office">
+                    <Row className="component_footer_office_row">
+                      <Col className="component_footer_office_heading">
+                        Office Address
+                      </Col>
+                      <Col className="component_footer_office_content">
+                        <Row gutter={[8, 8]}>
+                          <Col
+                            span={24}
+                            className="component_footer_office_content_title"
+                          >
+                            Global Headquarter
+                          </Col>
+                          <Col
+                            span={24}
+                            className="component_footer_office_content_desc"
+                          >
+                            2200 Pennsylvania Avenue NW 4th Floor, Washington,
+                            D.C 20037
+                          </Col>
+                        </Row>
+                      </Col>
+                      <Col className="component_footer_office_content">
+                        <Row gutter={[8, 8]}>
+                          <Col
+                            span={24}
+                            className="component_footer_office_content_title"
+                          >
+                            Global Headquarter
+                          </Col>
+                          <Col
+                            span={24}
+                            className="component_footer_office_content_desc"
+                          >
+                            2200 Pennsylvania Avenue NW 4th Floor, Washington,
+                            D.C 20037
+                          </Col>
+                        </Row>
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+              </Col>
+              <Col className="component_footer_nav">
+                <Row className="component_footer_nav_list">
+                  <Col className="component_footer_company">
+                    <Row className="component_footer_company_row">
+                      <Col className="component_footer_company_heading">
+                        Company
+                      </Col>
+                      <Col className="component_footer_company_content">
+                        <Row className="component_footer_company_content_list">
+                          <Col className="component_footer_company_content_list_item">
+                            Our Story
+                          </Col>
+                          <Col className="component_footer_company_content_list_item">
+                            Meet the Team
+                          </Col>
+                          <Col className="component_footer_company_content_list_item">
+                            Shariah Board
+                          </Col>
+                          <Col className="component_footer_company_content_list_item">
+                            Career
+                          </Col>
+                          <Col className="component_footer_company_content_list_item">
+                            Contact Us
+                          </Col>
+                        </Row>
+                      </Col>
+                    </Row>
+                  </Col>
+                  <Col className="component_footer_services">
+                    <Row className="component_footer_services_row">
+                      <Col className="component_footer_services_heading">
+                        Services
+                      </Col>
+                      <Col className="component_footer_services_content">
+                        <Row className="component_footer_services_content_list">
+                          <Col className="component_footer_services_content_list_item">
+                            Personal
+                          </Col>
+                          <Col className="component_footer_services_content_list_item">
+                            Business
+                          </Col>
+                          <Col className="component_footer_services_content_list_item">
+                            Student
+                          </Col>
+                          <Col className="component_footer_services_content_list_item">
+                            Private
+                          </Col>
+                        </Row>
+                      </Col>
+                    </Row>
+                  </Col>
+                  <Col className="component_footer_resources">
+                    <Row className="component_footer_resources_row">
+                      <Col className="component_footer_resources_heading">
+                        Resources
+                      </Col>
+                      <Col className="component_footer_resources_content">
+                        <Row className="component_footer_resources_content_list">
+                          <Col className="component_footer_resources_content_list_item">
+                            Personal
+                          </Col>
+                          <Col className="component_footer_resources_content_list_item">
+                            Business
+                          </Col>
+                          <Col className="component_footer_resources_content_list_item">
+                            Student
+                          </Col>
+                          <Col className="component_footer_resources_content_list_item">
+                            Career
+                          </Col>
+                          <Col className="component_footer_resources_content_list_item">
+                            Private
+                          </Col>
+                        </Row>
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
+          </Col>
+          <Col span={24} className="container_footer_secondary">
+            <Row className="container_footer_secondary_row">
+              <Col className="container_footer_secondary_copyright">
+                2021 Copyright WadhBank, LLC. All rights reserved
+              </Col>
+              <Col className="container_footer_secondary_services">
+                <Row className="container_footer_secondary_services_list">
+                  <Col className="container_footer_secondary_services_list_item">
+                    Service Agreement
+                  </Col>
+                  <Col className="container_footer_secondary_services_list_item">
+                    Privacy Policy
+                  </Col>
+                  <Col className="container_footer_secondary_services_list_item">
+                    Cookies
+                  </Col>
+                  <Col className="container_footer_secondary_services_list_item">
+                    RSS
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      </FooterWrapper>
       {/* <form onSubmit={formHandle}>
         <input
           className="bg-white rounded-sm border border-indigo-700"
