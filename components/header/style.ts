@@ -101,7 +101,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Menus = styled(Drawer)`
-  display: none;
+  /* display: none; */
   @media screen and (max-width: ${breakpoints.tab_large}) {
     display: block;
   }

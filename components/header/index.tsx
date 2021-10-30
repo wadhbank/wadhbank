@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,11 +7,21 @@ import { IconHamburger, ImageWadhbank } from "../../assets";
 import URL from "../../configs/baseUrl";
 import { Wrapper, Menus } from "./style";
 import { Col, Divider, Row } from "antd";
+import breakpoints from "../../configs/breakpoints";
+import { useMediaQuery } from "react-responsive";
 
-const Index = () => {
+const Index = (props) => {
+  const { onScrollIntoSignUp } = props;
   const router = useRouter();
   const { pathname } = router;
   const [showMenus, setShowMenus] = useState(false);
+  const tabScreen = useMediaQuery({ minWidth: breakpoints.tab_large });
+
+  useEffect(() => {
+    if (showMenus) {
+      setShowMenus(false);
+    }
+  }, [tabScreen]);
 
   const menus = [
     {
@@ -56,7 +66,11 @@ const Index = () => {
             </Row>
           </Col>
           <Col className="component_menus">
-            <Button type="default" className="component_menus_sign_up">
+            <Button
+              type="default"
+              className="component_menus_sign_up"
+              onClick={onScrollIntoSignUp}
+            >
               Sign up for free
             </Button>
             <Button
@@ -97,7 +111,14 @@ const Index = () => {
           })}
           <Divider className="component_list_item_divider" />
           <Col className="component_list_item_divider_button">
-            <Button block type="default">
+            <Button
+              block
+              type="default"
+              onClick={() => {
+                setShowMenus(false);
+                onScrollIntoSignUp();
+              }}
+            >
               Sign up for free
             </Button>
           </Col>
