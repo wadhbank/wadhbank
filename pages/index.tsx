@@ -60,6 +60,7 @@ import {
   Wrapper,
 } from "./index.style";
 import breakpoints from "../configs/breakpoints";
+import { onValidateEmail } from "../utils/commonUtils";
 
 SwiperCore.use([Pagination]);
 SwiperCore.use([Navigation]);
@@ -208,8 +209,18 @@ export default function Home({ initialUsers }) {
                               message: "Please enter your email",
                             },
                             {
-                              // type: "email",
+                              type: "email",
                               message: "Please enter valid email",
+                            },
+                            {
+                              validator(_, value) {
+                                if (email && !onValidateEmail(value)) {
+                                  return Promise.reject(
+                                    new Error("Please enter valid email")
+                                  );
+                                }
+                                return Promise.resolve();
+                              },
                             },
                           ]}
                         >
