@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { Prisma } from "prisma";
-import { Col, Row, Input, List, Collapse, Divider } from "antd";
+import { Col, Row, Input, List, Collapse } from "antd";
 import SwiperCore, { Pagination, Navigation } from "swiper";
 import { useMediaQuery } from "react-responsive";
 import Head from "next/head";
@@ -12,14 +12,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import prisma from "../lib/prisma";
 import { fetcher } from "../utils/fetcher";
-import {
-  Header,
-  Swiper,
-  Form,
-  Button,
-  Modal,
-  ModalWaitingList,
-} from "../components";
+import { Header, Swiper, Form, Button, ModalWaitingList } from "../components";
 import {
   IconArrowLeft,
   IconArrowRight,
@@ -198,7 +191,7 @@ export default function Home({ initialUsers }) {
                           name="name"
                           rules={[
                             {
-                              // required: true,
+                              required: true,
                               message: "Please enter your full name",
                             },
                           ]}
@@ -211,7 +204,7 @@ export default function Home({ initialUsers }) {
                           name="email"
                           rules={[
                             {
-                              // required: true,
+                              required: true,
                               message: "Please enter your email",
                             },
                             {
@@ -467,7 +460,7 @@ export default function Home({ initialUsers }) {
                 clickable: true,
               }}
               autoplay={{
-                delay: 2400,
+                delay: 3000,
                 disableOnInteraction: false,
               }}
               dataSource={testimonialList}

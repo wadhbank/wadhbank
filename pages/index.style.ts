@@ -520,7 +520,7 @@ export const AboutWrapper = styled.div`
         width: 100%;
         display: grid;
         top: 50%;
-        left: 50%;
+        left: 45%;
         z-index: 0;
         transform: translateY(-50%);
         > div {
@@ -704,7 +704,7 @@ export const AdvantageWrapper = styled.div`
 
     .container_advantage_slider {
       width: 100%;
-      padding: 40px 80px;
+      padding: 40px 80px 100px 80px;
       .component_slider_item {
         display: flex;
         gap: 32px !important;
@@ -1182,6 +1182,7 @@ export const TestimonialWrapper = styled.div`
     }
     .component_testimonial_slider {
       width: 100%;
+      padding-bottom: 24px;
       .swiper-wrapper {
         .swiper-slide {
           width: 400px;
@@ -1649,10 +1650,12 @@ export const FooterWrapper = styled.div`
         .component_footer_main {
           .component_footer_main_row {
             display: grid;
-            grid-template-columns: 1fr auto;
+            grid-template-columns: 1fr 1fr;
             justify-content: space-between;
+            /* gap: 40px !important; */
             .component_footer_base {
               max-width: 290px;
+              /* width: max-content; */
               .component_footer_base_row {
                 display: flex;
                 flex-direction: column;
@@ -1723,6 +1726,7 @@ export const FooterWrapper = styled.div`
             }
             .component_footer_office {
               max-width: 290px;
+              /* width: max-content; */
               .component_footer_office_row {
                 display: flex;
                 flex-direction: column;
@@ -1750,10 +1754,12 @@ export const FooterWrapper = styled.div`
         .component_footer_nav {
           .component_footer_nav_list {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            /* column-gap: 40px; */
+            grid-template-columns: auto auto auto;
             justify-content: space-between;
             .component_footer_company {
               max-width: 180px;
+              width: max-content;
               .component_footer_company_row {
                 display: flex;
                 flex-direction: column;
@@ -1782,6 +1788,7 @@ export const FooterWrapper = styled.div`
             }
             .component_footer_services {
               max-width: 180px;
+              width: max-content;
               .component_footer_services_row {
                 display: flex;
                 flex-direction: column;
@@ -1810,6 +1817,7 @@ export const FooterWrapper = styled.div`
             }
             .component_footer_resources {
               max-width: 180px;
+              width: max-content;
               .component_footer_resources_row {
                 display: flex;
                 flex-direction: column;

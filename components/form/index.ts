@@ -5,6 +5,7 @@ import colors from "../../configs/colors";
 import fonts from "../../configs/fonts";
 
 const Form: typeof FormAntd = styled(FormAntd)<FormProps>`
+  font-family: Raleway;
   .ant-form-item-control-input-content .ant-input {
     border: 1px solid ${colors.black60} !important;
     border-radius: 10px;
@@ -39,6 +40,34 @@ const Form: typeof FormAntd = styled(FormAntd)<FormProps>`
 
   .ant-form-item-explain.ant-form-item-explain-error {
     margin-top: 12px !important;
+  }
+
+  &.login-form {
+    .password-form {
+      .ant-input {
+        border: none !important;
+        height: auto;
+        border-radius: 0;
+        font-size: 16px;
+        font-weight: 400px;
+        color: ${colors.black60};
+      }
+      .ant-input-affix-wrapper.ant-input-password {
+        height: 64px;
+        border-radius: 10px;
+        border: 1px solid ${colors.black50} !important;
+      }
+      .ant-input-affix-wrapper.ant-input-password {
+        padding: 20px 24px !important;
+      }
+      .ant-input-suffix {
+        svg {
+          width: 24px;
+          height: 24px;
+          fill: ${colors.black100};
+        }
+      }
+    }
   }
 `;
 

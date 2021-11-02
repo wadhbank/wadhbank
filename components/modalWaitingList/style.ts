@@ -71,7 +71,7 @@ const ModalWrapper = styled.div`
 
   @media screen and (max-width: ${breakpoints.tab}) {
     .container_modal_waiting_list {
-      padding: 0;
+      padding: 16px 16px 28px 16px;
       .component_modal_waiting_list_title {
         ${fonts.font_heading_6};
         margin-bottom: 16px;
@@ -85,7 +85,7 @@ const ModalWrapper = styled.div`
         padding: 16px 0;
       }
       .component_modal_waiting_list_social_share {
-        ${fonts.font_extra_small};
+        ${fonts.font_small};
       }
     }
   }
