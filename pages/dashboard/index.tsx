@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { Col, Row, Menu } from "antd";
+import { useSession } from "next-auth/client";
+import { Col, Row, Menu, Spin } from "antd";
 import {
   IconChevronDown,
   IconChevronLeft,
@@ -50,9 +51,39 @@ const pageSize = 25;
 export default function Index() {
   const router = useRouter();
 
+  const [session, loading] = useSession();
   const [currentPage, setCurrentPage] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [userList, setUserList] = useState([]);
+
+  useEffect(() => {
+    setUserList(waitingList);
+    setIsLoading(false);
+  }, []);
+
+  const isSessionValid = (session) => {
+    if (
+      typeof session !== typeof undefined &&
+      session !== null &&
+      typeof session.user !== typeof undefined
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  if (loading) {
+    return <Spin />;
+  } else {
+    if (!isSessionValid(session)) {
+      return (
+        <div className="wrapper">
+          <p>You are not logged in</p>
+        </div>
+      );
+    }
+  }
 
   const onGetCurrentShowing = () => {
     const indexOfLast = (currentPage + 1) * pageSize;
@@ -62,11 +93,6 @@ export default function Index() {
     const endIndex = currentPage * pageSize + currentData?.length;
     return `Showing ${startIndex}-${endIndex} data of ${userList?.length} data`;
   };
-
-  useEffect(() => {
-    setUserList(waitingList);
-    setIsLoading(false);
-  }, []);
 
   return (
     <Wrapper>
