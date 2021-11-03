@@ -6,3 +6,4 @@ export { default as Swiper } from "./swiper";
 export { default as Form } from "./form";
 export { default as Modal } from "./modal";
 export { default as ModalWaitingList } from "./modalWaitingList";
+export { default as Table } from "./table";

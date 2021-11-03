@@ -1,13 +1,22 @@
-import { Col, Row, Menu } from "antd";
+import { useEffect, useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { Col, Row, Menu } from "antd";
 import {
   IconChevronDown,
+  IconChevronLeft,
+  IconChevronRight,
+  IconFile,
   IconLogout,
   IconMale,
   ImageWadhbank,
 } from "../../assets";
-import Wrapper, { DropdownMenus, Header } from "./style";
+import Wrapper, { DropdownMenus, Header, PaginationCustom } from "./style";
+import { Table, Button } from "../../components";
+import { waitingList } from "./dummy";
+import columns from "./column.table";
+import URL from "../../configs/baseUrl";
 
 const menu = (
   <Menu className="component_dropdown_menus">
@@ -37,7 +46,28 @@ const menu = (
   </Menu>
 );
 
+const pageSize = 25;
 export default function Index() {
+  const router = useRouter();
+
+  const [currentPage, setCurrentPage] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const [userList, setUserList] = useState([]);
+
+  const onGetCurrentShowing = () => {
+    const indexOfLast = (currentPage + 1) * pageSize;
+    const indexOfFirst = indexOfLast - pageSize;
+    const currentData = userList?.slice(indexOfFirst, indexOfLast);
+    const startIndex = currentPage * pageSize + 1;
+    const endIndex = currentPage * pageSize + currentData?.length;
+    return `Showing ${startIndex}-${endIndex} data of ${userList?.length} data`;
+  };
+
+  useEffect(() => {
+    setUserList(waitingList);
+    setIsLoading(false);
+  }, []);
+
   return (
     <Wrapper>
       <Head>
@@ -47,12 +77,18 @@ export default function Index() {
       </Head>
       <Header>
         <Row className="container_header">
-          <Col className="component_logo">
+          <Col
+            className="component_logo"
+            onClick={() => {
+              router.push(URL.LANDING);
+            }}
+          >
             <Image src={ImageWadhbank} alt="wadhbank" objectFit="cover" />
           </Col>
           <Col className="component_nav">Waiting List</Col>
           <Col className="component_menus">
             <DropdownMenus
+              trigger={["click"]}
               overlay={menu}
               overlayClassName="component_menus_overlay"
               getPopupContainer={(trigger) => {
@@ -72,7 +108,84 @@ export default function Index() {
           </Col>
         </Row>
       </Header>
-      <p>This is the Dashboard page.</p>
+      <Col span={24} className="container_waiting_list">
+        <Row>
+          <Col span={24} className="component_waiting_list_header">
+            <Row justify="space-between" align="middle">
+              <Col className="component_waiting_list_header_title">
+                Waiting List
+              </Col>
+              <Col className="component_waiting_list_header_export">
+                <Button type="default">
+                  <Row align="middle" gutter={16}>
+                    <Col className="component_waiting_list_header_export_icon">
+                      <IconFile />
+                    </Col>
+                    <Col className="component_waiting_list_header_export_label">
+                      Export to excel
+                    </Col>
+                  </Row>
+                </Button>
+              </Col>
+            </Row>
+          </Col>
+          <Col span={24} className="component_waiting_list_table">
+            <Col span={24} className="component_waiting_list_table_header">
+              <Row
+                justify="space-between"
+                align="middle"
+                className="component_waiting_list_table_header_row"
+              >
+                <Col className="component_waiting_list_table_header_total">
+                  Total user on waiting list:&nbsp;
+                  <span className="component_total_bold">{`${userList?.length} people`}</span>
+                </Col>
+                {userList?.length !== 0 && (
+                  <Col className="component_waiting_list_table_header_pagination">
+                    <Row gutter={16} align="middle" wrap={false}>
+                      <Col className="component_pagination_showing">
+                        {onGetCurrentShowing()}
+                      </Col>
+                      <Col className="component_pagination_handler">
+                        <PaginationCustom
+                          current={currentPage + 1}
+                          total={userList.length}
+                          pageSize={pageSize}
+                          onChange={(page) => {
+                            setCurrentPage(page - 1);
+                          }}
+                          itemRender={(_, type, originElement) => {
+                            if (type === "prev") {
+                              return <IconChevronLeft />;
+                            }
+                            if (type === "next") {
+                              return <IconChevronRight />;
+                            }
+                            return originElement;
+                          }}
+                        />
+                      </Col>
+                    </Row>
+                  </Col>
+                )}
+              </Row>
+            </Col>
+            <Col span={24} className="component_waiting_list_table_content">
+              <Table
+                dataSource={userList}
+                columns={columns({ currentPage, pageSize })}
+                rowKey="id"
+                loading={isLoading}
+                pagination={{
+                  pageSize,
+                  style: { display: "none" },
+                  current: currentPage + 1,
+                }}
+              />
+            </Col>
+          </Col>
+        </Row>
+      </Col>
     </Wrapper>
   );
 }

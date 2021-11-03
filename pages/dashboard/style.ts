@@ -1,4 +1,4 @@
-import { Dropdown } from "antd";
+import { Dropdown, Pagination } from "antd";
 import styled from "styled-components";
 import breakpoints from "../../configs/breakpoints";
 import colors from "../../configs/colors";
@@ -6,6 +6,85 @@ import fonts from "../../configs/fonts";
 
 const Wrapper = styled.div`
   font-family: Raleway;
+  min-width: 1200px;
+  .container_waiting_list {
+    display: flex;
+    justify-content: center;
+    .component_waiting_list_header {
+      margin-top: 40px;
+      margin-bottom: 32px;
+      .component_waiting_list_header_title {
+        ${fonts.font_heading_5};
+        color: ${colors.black100};
+      }
+      .component_waiting_list_header_export {
+        .ant-btn {
+          padding: 0 12px;
+          height: 40px;
+        }
+        .component_waiting_list_header_export_label {
+          min-width: 118px;
+          text-align: left;
+          padding: 0 !important;
+          ${fonts.font_small_bold};
+        }
+      }
+    }
+
+    > div {
+      width: 1060px;
+    }
+  }
+
+  .component_waiting_list_table {
+    max-height: 920px;
+    margin-bottom: 60px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+    border-radius: 10px;
+    border-bottom: 1px solid ${colors.black30};
+    &::-webkit-scrollbar {
+      height: 0;
+      width: 0;
+    }
+
+    .component_waiting_list_table_header {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      border-radius: 0 0 10px 10px;
+      background-color: ${colors.white100};
+      .component_waiting_list_table_header_row {
+        background-color: ${colors.white100};
+        padding: 16px;
+        border: 1px solid ${colors.black30};
+        border-radius: 10px 10px 10px 10px;
+        .component_waiting_list_table_header_total {
+          ${fonts.font_normal};
+          color: ${colors.black60};
+          .component_total_bold {
+            ${fonts.font_normal_bold};
+            color: ${colors.black100};
+          }
+        }
+        .component_waiting_list_table_header_pagination {
+          .component_pagination_handler_arrow {
+            .ant-btn {
+              padding: 0;
+              height: unset !important;
+            }
+            svg path {
+              /* fill: yellow; */
+            }
+          }
+        }
+      }
+    }
+    .component_waiting_list_table_content {
+      padding-top: 20px;
+    }
+  }
 `;
 
 export default Wrapper;
@@ -28,6 +107,7 @@ export const Header = styled.div`
       display: flex;
       align-items: center;
       width: 141px;
+      cursor: pointer;
     }
     .component_nav {
       position: absolute;
@@ -62,7 +142,7 @@ export const Header = styled.div`
   }
 `;
 
-export const DropdownMenus = styled(Dropdown)`
+export const DropdownMenus: typeof Dropdown = styled(Dropdown)`
   .ant-dropdown-menu {
     padding: 0 !important;
   }
@@ -99,5 +179,25 @@ export const DropdownMenus = styled(Dropdown)`
         }
       }
     }
+  }
+`;
+
+export const PaginationCustom = styled(Pagination)`
+  .ant-pagination-item,
+  .ant-pagination-jump-next,
+  .ant-pagination-jump-prev {
+    display: none;
+  }
+  .ant-pagination-prev,
+  .ant-pagination-next {
+    min-width: unset;
+    width: unset;
+    height: unset;
+  }
+  .ant-pagination-prev {
+    margin-right: 12px;
+  }
+  .ant-pagination-disabled svg path {
+    fill: ${colors.black50};
   }
 `;

@@ -29,15 +29,15 @@ const Index = (props) => {
       label: "Personal",
     },
     {
-      to: URL.BUSINESS,
+      to: URL.LANDING,
       label: "Business",
     },
     {
-      to: URL.STUDENT,
+      to: URL.LANDING,
       label: "Student",
     },
     {
-      to: URL.PRIVATE,
+      to: URL.LANDING,
       label: "Private",
     },
   ];

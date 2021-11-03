@@ -1,11 +1,18 @@
+import { useRouter } from "next/router";
 import Head from "next/head";
 import Image from "next/image";
 import { Col, Input, Row } from "antd";
 import Wrapper from "./style";
 import { Form, Button } from "../../../components";
 import { ImageWadhbank } from "../../../assets";
+import URL from "../../../configs/baseUrl";
 
 const Index = () => {
+  const router = useRouter();
+  const onSubmit = () => {
+    router.push(URL.DASHBOARD);
+  };
+
   return (
     <Wrapper>
       <Head>
@@ -24,6 +31,7 @@ const Index = () => {
                 Login into your account to continue
               </Col>
               <Form
+                onFinish={onSubmit}
                 layout="vertical"
                 className="component_login_card_form login-form"
               >
@@ -32,7 +40,16 @@ const Index = () => {
                     span={24}
                     className="component_login_card_label_form_email"
                   >
-                    <Form.Item label="Email or username" name="name">
+                    <Form.Item
+                      label="Email or username"
+                      name="name"
+                      rules={[
+                        {
+                          required: true,
+                          message: "Please enter your email or user name",
+                        },
+                      ]}
+                    >
                       <Input placeholder="Enter your email or username" />
                     </Form.Item>
                   </Col>
@@ -41,6 +58,12 @@ const Index = () => {
                       label="Password"
                       name="password"
                       className="password-form"
+                      rules={[
+                        {
+                          required: true,
+                          message: "Please enter your password",
+                        },
+                      ]}
                     >
                       <Input.Password placeholder="Enter your password" />
                     </Form.Item>
@@ -49,7 +72,7 @@ const Index = () => {
                     span={24}
                     className="component_login_card_label_form_submit"
                   >
-                    <Button block type="primary">
+                    <Button block type="primary" htmlType="submit">
                       Login
                     </Button>
                   </Col>
