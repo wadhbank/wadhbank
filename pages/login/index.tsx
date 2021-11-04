@@ -42,7 +42,9 @@ export default function Login() {
         <input
           type="text"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => {
+            return setEmail(e.target.value);
+          }}
         />
       </label>
       <label>
@@ -50,7 +52,9 @@ export default function Login() {
         <input
           type="password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => {
+            return setPassword(e.target.value);
+          }}
         />
       </label>
       <button type="submit">Submit login</button>

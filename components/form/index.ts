@@ -46,21 +46,27 @@ const Form: typeof FormAntd = styled(FormAntd)<FormProps>`
     .password-form {
       .ant-input {
         border: none !important;
-        height: auto;
+        height: 64px;
         border-radius: 0;
         font-size: 16px;
         font-weight: 400px;
         color: ${colors.black60};
+        padding: 20px 60px 20px 24px !important;
+        width: 100%;
       }
       .ant-input-affix-wrapper.ant-input-password {
         height: 64px;
-        border-radius: 10px;
         border: 1px solid ${colors.black50} !important;
       }
       .ant-input-affix-wrapper.ant-input-password {
-        padding: 20px 24px !important;
+        padding: 0 !important;
+        border-radius: 10px;
+        overflow: hidden;
       }
       .ant-input-suffix {
+        position: absolute;
+        right: 24px;
+        top: 20px;
         svg {
           width: 24px;
           height: 24px;
@@ -68,6 +74,10 @@ const Form: typeof FormAntd = styled(FormAntd)<FormProps>`
         }
       }
     }
+  }
+  input:-internal-autofill-selected {
+    background-color: red;
+    color: yellow;
   }
 `;
 

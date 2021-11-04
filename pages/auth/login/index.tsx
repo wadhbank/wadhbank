@@ -1,16 +1,81 @@
 import { useRouter } from "next/router";
+import { signIn, useSession } from "next-auth/client";
 import Head from "next/head";
 import Image from "next/image";
-import { Col, Input, Row } from "antd";
+import { Col, Input, Row, Spin } from "antd";
 import Wrapper from "./style";
 import { Form, Button } from "../../../components";
 import { ImageWadhbank } from "../../../assets";
 import URL from "../../../configs/baseUrl";
+import { useState } from "react";
 
 const Index = () => {
   const router = useRouter();
-  const onSubmit = () => {
-    router.push(URL.DASHBOARD);
+  const [form] = Form.useForm();
+  const [session, loading] = useSession();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const isSessionValid = (session) => {
+    if (
+      typeof session !== typeof undefined &&
+      session !== null &&
+      typeof session.user !== typeof undefined
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  if (loading) {
+    return <Spin />;
+  } else {
+    if (isSessionValid(session)) {
+      router.push(URL.DASHBOARD);
+      return null;
+    }
+  }
+
+  const onSubmit = (values) => {
+    setIsLoading(true);
+    signIn("credentials", {
+      email: values?.email?.trim(),
+      password: values?.password?.trim(),
+      callbackUrl: `${window.location.origin}${URL.DASHBOARD}`,
+      redirect: false,
+    })
+      .then((res) => {
+        if (res?.error !== null) {
+          if (res?.status === 401) {
+            form.setFields([
+              {
+                name: "email",
+                errors: ["Invalid login, please try again"],
+              },
+              {
+                name: "password",
+                errors: ["Invalid login, please try again"],
+              },
+            ]);
+          } else {
+            form.setFields([
+              {
+                name: "email",
+                errors: [res?.error],
+              },
+              {
+                name: "password",
+                errors: [res?.error],
+              },
+            ]);
+          }
+        } else {
+          router.push(res?.url);
+        }
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   return (
@@ -31,6 +96,7 @@ const Index = () => {
                 Login into your account to continue
               </Col>
               <Form
+                form={form}
                 onFinish={onSubmit}
                 layout="vertical"
                 className="component_login_card_form login-form"
@@ -42,13 +108,14 @@ const Index = () => {
                   >
                     <Form.Item
                       label="Email or username"
-                      name="name"
+                      name="email"
                       rules={[
                         {
                           required: true,
                           message: "Please enter your email or user name",
                         },
                       ]}
+                      initialValue={null}
                     >
                       <Input placeholder="Enter your email or username" />
                     </Form.Item>
@@ -72,7 +139,12 @@ const Index = () => {
                     span={24}
                     className="component_login_card_label_form_submit"
                   >
-                    <Button block type="primary" htmlType="submit">
+                    <Button
+                      block
+                      type="primary"
+                      htmlType="submit"
+                      loading={isLoading}
+                    >
                       Login
                     </Button>
                   </Col>

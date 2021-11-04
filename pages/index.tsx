@@ -868,7 +868,7 @@ export default function Home({ initialUsers }) {
           </Col>
         </Row>
       </FooterWrapper>
-      {/* <form onSubmit={formHandle}>
+      <form onSubmit={formHandle}>
         <input
           className="bg-white rounded-sm border border-indigo-700"
           type="text"
@@ -890,43 +890,13 @@ export default function Home({ initialUsers }) {
 
       {users.map((u, index) => {
         return (
-          <div key={index}>
-            <div className="flex">
-              <p>
-                {u.fullName}| {u.email}
-              </p>
-            </div>
-            <input
-              className="bg-white rounded-sm border border-indigo-700"
-              type="text"
-              onChange={(e) => {
-                return setFullName(e.target.value);
-              }}
-              value={fullName}
-            />
-            <input
-              className="bg-white rounded-sm border border-indigo-700"
-              type="text"
-              onChange={(e) => {
-                return setEmail(e.target.value);
-              }}
-              value={email}
-            />
-
-            <button>Submit</button>
-          </div>
-        );
-      })}
-
-      {users.map((u, index) => {
-        return (
           <div className="flex" key={index}>
             <p>
-              {u.fullName}| {u.email} | {formatDate(u.dateCreated)}
+              {u.fullName}| {u.email} | {u.dateCreated?.toISOString()}
             </p>
           </div>
         );
-      })} */}
+      })}
     </Wrapper>
   );
 }

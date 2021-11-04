@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
+import { signOut } from "next-auth/client";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/client";
 import { Col, Row, Menu, Spin } from "antd";
@@ -34,7 +35,13 @@ const menu = (
     <Menu.Divider />
     <Menu.Item key="1" className="component_dropdown_menus_item links">
       <Row gutter={[4, 4]}>
-        <Col span={24} className="component_link">
+        <Col
+          span={24}
+          className="component_link"
+          onClick={() => {
+            signOut({ redirect: false, callbackUrl: URL.LOGIN });
+          }}
+        >
           <Row gutter={12} align="middle">
             <Col>
               <IconLogout />
@@ -77,11 +84,8 @@ export default function Index() {
     return <Spin />;
   } else {
     if (!isSessionValid(session)) {
-      return (
-        <div className="wrapper">
-          <p>You are not logged in</p>
-        </div>
-      );
+      router.push(URL.LOGIN);
+      return null;
     }
   }
 
