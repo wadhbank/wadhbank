@@ -1874,6 +1874,10 @@ export const FooterWrapper = styled.div`
             .container_footer_secondary_services_list_item {
               ${fonts.font_small_medium};
               color: ${colors.black100};
+              cursor: pointer;
+              :hover {
+                text-decoration: underline;
+              }
             }
           }
         }
