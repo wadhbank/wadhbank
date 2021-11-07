@@ -16,6 +16,7 @@
     "antd": "^4.16.13",
     "babel-plugin-superjson-next": "^0.4.2",
     "craco-less": "^1.20.0",
+    "moment": "^2.29.1",
     "next": "11.1.2",
     "next-auth": "^3.29.0",
     "prisma": "^3.3.0",

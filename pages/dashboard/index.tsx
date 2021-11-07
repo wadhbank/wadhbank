@@ -6,6 +6,7 @@ import { signOut } from "next-auth/client";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/client";
 import { Col, Row, Menu, Spin } from "antd";
+import moment from "moment";
 import prisma from "../../lib/prisma";
 import {
   IconChevronDown,
@@ -19,6 +20,7 @@ import {
 import Wrapper, { DropdownMenus, Header, PaginationCustom } from "./style";
 import { Table, Button } from "../../components";
 import URL from "../../configs/baseUrl";
+import { numberFormatter } from "../../utils/commonUtils";
 
 const menu = (
   <Menu className="component_dropdown_menus">
@@ -94,9 +96,13 @@ const Index = ({ initialUsers }) => {
     const indexOfLast = (currentPage + 1) * pageSize;
     const indexOfFirst = indexOfLast - pageSize;
     const currentData = userList?.slice(indexOfFirst, indexOfLast);
-    const startIndex = currentPage * pageSize + 1;
-    const endIndex = currentPage * pageSize + currentData?.length;
-    return `Showing ${startIndex}-${endIndex} data of ${userList?.length} data`;
+    const startIndex = numberFormatter(currentPage * pageSize + 1);
+    const endIndex = numberFormatter(
+      currentPage * pageSize + currentData?.length
+    );
+    return `Showing ${startIndex}-${endIndex} data of ${numberFormatter(
+      userList?.length
+    )} data`;
   };
 
   const columns = [
@@ -119,7 +125,7 @@ const Index = ({ initialUsers }) => {
       title: "Registered Date",
       dataIndex: "dateCreated",
       render: (record) => {
-        return record?.toISOString();
+        return moment(record)?.format("DD MMM YYYY");
       },
     },
   ];
@@ -194,7 +200,9 @@ const Index = ({ initialUsers }) => {
               >
                 <Col className="component_waiting_list_table_header_total">
                   Total user on waiting list:&nbsp;
-                  <span className="component_total_bold">{`${userList?.length} people`}</span>
+                  <span className="component_total_bold">{`${numberFormatter(
+                    userList?.length
+                  )} people`}</span>
                 </Col>
                 {userList?.length !== 0 && (
                   <Col className="component_waiting_list_table_header_pagination">
