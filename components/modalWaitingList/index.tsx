@@ -4,7 +4,7 @@ import { IconFacebook, IconLinkedin, IconTwitter } from "../../assets";
 import ModalWrapper from "./style";
 
 const Index = (props) => {
-  const { visible, onCancel, ...otherProps } = props;
+  const { visible, onCancel, totalUsers, ...otherProps } = props;
   return (
     <Modal
       {...otherProps}
@@ -26,7 +26,7 @@ const Index = (props) => {
           </Col>
           <Col className="component_modal_waiting_list_sequence">
             There are&nbsp;
-            <span className="bold">1.562</span>
+            <span className="bold">{totalUsers + 1}</span>
             &nbsp;people ahead of you
           </Col>
           <Col className="component_modal_waiting_list_social_share">
