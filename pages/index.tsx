@@ -915,17 +915,6 @@ export default function Home({ initialUsers }) {
           </Col>
         </Row>
       </FooterWrapper>
-
-      {users.map((u, index) => {
-        return (
-          <div className="flex" key={index}>
-            <p>
-              {u.fullName}| {u.email} |{" "}
-              {/* {u?.dateCreated ? u?.dateCreated?.toISOString() : ""} */}
-            </p>
-          </div>
-        );
-      })}
     </Wrapper>
   );
 }

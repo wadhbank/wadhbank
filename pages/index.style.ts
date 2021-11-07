@@ -1386,13 +1386,13 @@ export const FAQWrapper = styled.div`
         gap: 12px;
         flex: 1;
         .component_faq_collapse_expand_icon {
-          transform: rotate(0deg);
+          transform: rotate(180deg);
           transition: 0.3s ease-in-out;
           position: relative;
           order: 1;
           right: 0;
           &.active {
-            transform: rotate(180deg);
+            transform: rotate(0deg);
           }
           path {
             fill: ${colors.black60};
