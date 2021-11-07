@@ -46,7 +46,7 @@ import {
   invitationList,
   testimonialList,
 } from "../configs/content";
-import {
+import Wrapper, {
   AboutAdvantageWrapper,
   AboutWrapper,
   AdvantageWrapper,
@@ -57,7 +57,6 @@ import {
   HeroWrapper,
   InvitationWrapper,
   TestimonialWrapper,
-  Wrapper,
 } from "./index.style";
 import breakpoints from "../configs/breakpoints";
 import { onValidateEmail } from "../utils/commonUtils";

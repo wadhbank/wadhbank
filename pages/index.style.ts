@@ -3,9 +3,11 @@ import fonts from "../configs/fonts";
 import breakpoints from "../configs/breakpoints";
 import colors from "../configs/colors";
 
-export const Wrapper = styled.div`
+const Wrapper = styled.div`
   font-family: Raleway;
 `;
+
+export default Wrapper;
 
 export const HeroWrapper = styled.div`
   overflow: hidden;

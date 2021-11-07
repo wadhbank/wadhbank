@@ -1,10 +1,9 @@
 import styled from "styled-components";
 import { Form as FormAntd } from "antd";
-import { FormProps } from "antd/lib/form";
 import colors from "../../configs/colors";
 import fonts from "../../configs/fonts";
 
-const Form: typeof FormAntd = styled(FormAntd)<FormProps>`
+const Form: typeof FormAntd = styled(FormAntd)`
   font-family: Raleway;
   .ant-form-item-control-input-content .ant-input {
     border: 1px solid ${colors.black60} !important;
