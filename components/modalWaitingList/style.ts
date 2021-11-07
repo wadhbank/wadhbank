@@ -47,13 +47,12 @@ const ModalWrapper = styled.div`
       display: flex;
       flex-direction: row;
       gap: 32px;
-      > * :not(:first-child) {
+      > * {
+        cursor: pointer;
         path {
           fill: ${colors.black50};
         }
-      }
-      > :first-child {
-        path {
+        :hover path {
           fill: ${colors.blue70};
         }
       }

@@ -33,6 +33,7 @@ const Modal = styled(ModalLib)`
     .component_modal_header_close {
       position: absolute;
       right: 32px;
+      cursor: pointer;
     }
     .component_modal_header_logo {
       > div {

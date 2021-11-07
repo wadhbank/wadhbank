@@ -1712,13 +1712,12 @@ export const FooterWrapper = styled.div`
                     display: flex;
                     flex-direction: row;
                     gap: 24px;
-                    > * :not(:nth-child(2)) {
+                    > * {
+                      cursor: pointer;
                       path {
                         fill: ${colors.black50};
                       }
-                    }
-                    > :nth-child(2) {
-                      path {
+                      :hover path {
                         fill: ${colors.blue70};
                       }
                     }
