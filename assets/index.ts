@@ -50,3 +50,4 @@ export { default as ImageLineOrnament } from "./images/line-ornament.png";
 export { default as ImageLighterCircleOrnament } from "./images/lighter-circle-ornament.png";
 export { default as IconMale } from "./icons/male.png";
 export { default as IconFemale } from "./icons/female.png";
+export { default as IconCircleClose } from "./icons/circle-close.svg";

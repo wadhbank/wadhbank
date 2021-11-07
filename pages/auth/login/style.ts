@@ -57,8 +57,19 @@ const Wrapper = styled.div`
             .component_login_card_label_form_row {
               display: flex;
               flex-direction: column;
-              gap: 32px !important;
+              .component_login_card_label_form_message_errors {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                ${fonts.font_extra_small_medium};
+                color: ${colors.red10};
+                padding: 12px;
+                border: 1px solid ${colors.red10};
+                border-radius: 10px;
+                margin-bottom: 24px;
+              }
               .component_login_card_label_form_email {
+                margin-bottom: 32px;
                 .ant-input {
                   height: 64px;
                   padding: 20px 24px !important;
@@ -69,6 +80,7 @@ const Wrapper = styled.div`
                 }
               }
               .component_login_card_label_form_submit {
+                margin-top: 32px;
                 .ant-btn {
                   height: 60px;
                   ${fonts.font_normal_bold};
