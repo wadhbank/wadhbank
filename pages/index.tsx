@@ -71,11 +71,6 @@ export async function getServerSideProps() {
   };
 }
 
-export function formatDate(string) {
-  const options = { year: "numeric", month: "long", day: "numeric" };
-  return new Date(string).toLocaleDateString([]);
-}
-
 export default function Home({ initialUsers }) {
   const [users, setUsers] =
     useState<Prisma.UserUncheckedCreateInput[]>(initialUsers);

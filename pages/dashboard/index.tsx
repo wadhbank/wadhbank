@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { Prisma } from "prisma";
 import Head from "next/head";
 import Image from "next/image";
 import { signOut } from "next-auth/client";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/client";
 import { Col, Row, Menu, Spin } from "antd";
+import prisma from "../../lib/prisma";
 import {
   IconChevronDown,
   IconChevronLeft,
@@ -17,189 +19,6 @@ import {
 import Wrapper, { DropdownMenus, Header, PaginationCustom } from "./style";
 import { Table, Button } from "../../components";
 import URL from "../../configs/baseUrl";
-
-const waitingList = [
-  {
-    id: "1",
-    email: "john.doe@gmail.com",
-    name: "John Doe",
-    created_at: "8/16/05",
-  },
-  {
-    id: "2",
-    email: "debra.holt@example.com",
-    name: "Guy Hawkins",
-    created_at: "8/16/14",
-  },
-  {
-    id: "3",
-    email: "bill.sanders@example.com",
-    name: "Ralph Edwards",
-    created_at: "8/16/15",
-  },
-  {
-    id: "4",
-    email: "felicia.reid@example.com",
-    name: "Darlene Robertson",
-    created_at: "8/16/16",
-  },
-  {
-    id: "5",
-    email: "curtis.weaver@example.com",
-    name: "Cody Fisher",
-    created_at: "2/11/12",
-  },
-  {
-    id: "6",
-    email: "georgia.young@example.com",
-    name: "Bessie Cooper",
-    created_at: "12/10/13",
-  },
-  {
-    id: "7",
-    email: "willie.jennings@example.com",
-    name: "Leslie Alexander",
-    created_at: "5/7/16",
-  },
-  {
-    id: "8",
-    email: "jackson.graham@example.com",
-    name: "Wade Warren",
-    created_at: "5/27/15",
-  },
-  {
-    id: "9",
-    email: "debra.holt@example.com",
-    name: "Brooklyn Simmons",
-    created_at: "5/30/14",
-  },
-  {
-    id: "10",
-    email: "debbie.baker@example.com",
-    name: "Floyd Miles",
-    created_at: "8/30/14",
-  },
-  {
-    id: "11",
-    email: "john.doe@gmail.com",
-    name: "John Doe",
-    created_at: "8/16/05",
-  },
-  {
-    id: "12",
-    email: "debra.holt@example.com",
-    name: "Guy Hawkins",
-    created_at: "8/16/14",
-  },
-  {
-    id: "13",
-    email: "bill.sanders@example.com",
-    name: "Ralph Edwards",
-    created_at: "8/16/15",
-  },
-  {
-    id: "14",
-    email: "felicia.reid@example.com",
-    name: "Darlene Robertson",
-    created_at: "8/16/16",
-  },
-  {
-    id: "15",
-    email: "curtis.weaver@example.com",
-    name: "Cody Fisher",
-    created_at: "2/11/12",
-  },
-  {
-    id: "16",
-    email: "georgia.young@example.com",
-    name: "Bessie Cooper",
-    created_at: "12/10/13",
-  },
-  {
-    id: "17",
-    email: "willie.jennings@example.com",
-    name: "Leslie Alexander",
-    created_at: "5/7/16",
-  },
-  {
-    id: "18",
-    email: "jackson.graham@example.com",
-    name: "Wade Warren",
-    created_at: "5/27/15",
-  },
-  {
-    id: "19",
-    email: "debra.holt@example.com",
-    name: "Brooklyn Simmons",
-    created_at: "5/30/14",
-  },
-  {
-    id: "20",
-    email: "debbie.baker@example.com",
-    name: "Floyd Miles",
-    created_at: "8/30/14",
-  },
-  {
-    id: "21",
-    email: "john.doe@gmail.com",
-    name: "John Doe",
-    created_at: "8/16/05",
-  },
-  {
-    id: "22",
-    email: "debra.holt@example.com",
-    name: "Guy Hawkins",
-    created_at: "8/16/14",
-  },
-  {
-    id: "23",
-    email: "bill.sanders@example.com",
-    name: "Ralph Edwards",
-    created_at: "8/16/15",
-  },
-  {
-    id: "24",
-    email: "felicia.reid@example.com",
-    name: "Darlene Robertson",
-    created_at: "8/16/16",
-  },
-  {
-    id: "25",
-    email: "curtis.weaver@example.com",
-    name: "Cody Fisher",
-    created_at: "2/11/12",
-  },
-  {
-    id: "26",
-    email: "georgia.young@example.com",
-    name: "Bessie Cooper",
-    created_at: "12/10/13",
-  },
-  {
-    id: "27",
-    email: "willie.jennings@example.com",
-    name: "Leslie Alexander",
-    created_at: "5/7/16",
-  },
-  {
-    id: "28",
-    email: "jackson.graham@example.com",
-    name: "Wade Warren",
-    created_at: "5/27/15",
-  },
-  {
-    id: "29",
-    email: "debra.holt@example.com",
-    name: "Brooklyn Simmons",
-    created_at: "5/30/14",
-  },
-  {
-    id: "30",
-    email: "debra.holt@example.com",
-    name: "Brooklyn Simmons",
-    created_at: "5/30/14",
-  },
-];
 
 const menu = (
   <Menu className="component_dropdown_menus">
@@ -235,19 +54,20 @@ const menu = (
   </Menu>
 );
 
+export async function getServerSideProps() {
+  const users: Prisma.UserUncheckedCreateInput[] = await prisma.user.findMany();
+  return {
+    props: { initialUsers: users },
+  };
+}
+
 const pageSize = 25;
-export default function Index() {
+const Index = ({ initialUsers }) => {
+  const [userList] = useState<Prisma.UserUncheckedCreateInput[]>(initialUsers);
   const router = useRouter();
 
   const [session, loading] = useSession();
   const [currentPage, setCurrentPage] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
-  const [userList, setUserList] = useState([]);
-
-  useEffect(() => {
-    setUserList(waitingList);
-    setIsLoading(false);
-  }, []);
 
   const isSessionValid = (session) => {
     if (
@@ -283,7 +103,6 @@ export default function Index() {
     {
       title: "No.",
       dataIndex: "id",
-      // width: 41,
       render: (value, record, index) => {
         return currentPage * pageSize + index + 1;
       },
@@ -291,17 +110,17 @@ export default function Index() {
     {
       title: "Email",
       dataIndex: "email",
-      // width: 297,
     },
     {
       title: "Full Name",
-      dataIndex: "name",
-      // width: 297,
+      dataIndex: "fullName",
     },
     {
       title: "Registered Date",
-      dataIndex: "created_at",
-      // width: 297,
+      dataIndex: "dateCreated",
+      render: (record) => {
+        return record?.toISOString();
+      },
     },
   ];
 
@@ -412,7 +231,6 @@ export default function Index() {
                 dataSource={userList}
                 columns={columns}
                 rowKey="id"
-                loading={isLoading}
                 pagination={{
                   pageSize,
                   style: { display: "none" },
@@ -425,4 +243,6 @@ export default function Index() {
       </Col>
     </Wrapper>
   );
-}
+};
+
+export default Index;
