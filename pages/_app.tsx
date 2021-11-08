@@ -26,6 +26,7 @@ function MyApp({ Component, pageProps }) {
                 __html: `
                   *, *::before, *::after {
                     transition: none!important;
+                    opacity: 0;
                   }
                   `,
               }}
