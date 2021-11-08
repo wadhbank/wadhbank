@@ -1,8 +1,7 @@
 import React from "react";
-import { ButtonProps } from "antd/lib/button";
 import ButtonAntd from "./style";
 
-const Button = (props: ButtonProps) => {
+const Button: typeof ButtonAntd = (props) => {
   const {
     className,
     type,

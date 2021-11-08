@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { Prisma } from "prisma";
-import { Col, Row, Input, List, Collapse } from "antd";
+import { Col, Row, Input, List, Collapse, message } from "antd";
 import SwiperCore, { Pagination, Navigation } from "swiper";
 import { useMediaQuery } from "react-responsive";
 import Head from "next/head";
@@ -46,7 +46,7 @@ import {
   invitationList,
   testimonialList,
 } from "../configs/content";
-import {
+import Wrapper, {
   AboutAdvantageWrapper,
   AboutWrapper,
   AdvantageWrapper,
@@ -57,7 +57,6 @@ import {
   HeroWrapper,
   InvitationWrapper,
   TestimonialWrapper,
-  Wrapper,
 } from "./index.style";
 import breakpoints from "../configs/breakpoints";
 import { onValidateEmail } from "../utils/commonUtils";
@@ -72,38 +71,25 @@ export async function getServerSideProps() {
   };
 }
 
-export function formatDate(string) {
-  const options = { year: "numeric", month: "long", day: "numeric" };
-  return new Date(string).toLocaleDateString([]);
-}
-
 export default function Home({ initialUsers }) {
   const [users, setUsers] =
     useState<Prisma.UserUncheckedCreateInput[]>(initialUsers);
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [modalWaitingList, setModalWaitingList] = useState(false);
+
+  const [modalWaitingList, setModalWaitingList] = useState({
+    visible: false,
+    totalUsers: null,
+  });
+  const [isLoading, setIsLoading] = useState(false);
 
   const prevSlideBtn = useRef(null);
   const nextSlideBtn = useRef(null);
   const signUpForm = useRef(null);
+  const [firstForm] = Form.useForm();
+  const [secondForm] = Form.useForm();
 
   const desktopScreen = useMediaQuery({ maxWidth: breakpoints.desktop });
   const tabScreen = useMediaQuery({ maxWidth: breakpoints.tab });
   const phoneScreen = useMediaQuery({ maxWidth: breakpoints.phone });
-
-  const formHandle = async (e) => {
-    e.preventDefault();
-    const body: Prisma.UserCreateInput = {
-      fullName,
-      email,
-    };
-
-    await fetcher("/api/create", { user: body });
-    await setUsers([...users, body]);
-    setFullName("");
-    setEmail("");
-  };
 
   const onSliderHandler = () => {
     if (phoneScreen) return { slidesPerView: 2, slidesPerGroup: 2 };
@@ -136,8 +122,29 @@ export default function Home({ initialUsers }) {
     });
   };
 
-  const onSubmitRegister = () => {
-    setModalWaitingList(true);
+  const onSubmitRegister = (values) => {
+    const body: Prisma.UserCreateInput = {
+      fullName: values?.name?.trim(),
+      email: values?.email?.trim(),
+    };
+    setIsLoading(true);
+    fetcher("/api/create", { user: body })
+      .then((res) => {
+        const totalUsers = [...users, res];
+        setUsers(totalUsers);
+        setModalWaitingList({
+          visible: true,
+          totalUsers: totalUsers?.length,
+        });
+        firstForm.resetFields();
+        secondForm.resetFields();
+      })
+      .catch((err) => {
+        message.error(err?.message);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   return (
@@ -148,9 +155,12 @@ export default function Home({ initialUsers }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <ModalWaitingList
-        visible={modalWaitingList}
+        visible={modalWaitingList?.visible}
+        totalUsers={modalWaitingList?.totalUsers}
         onCancel={() => {
-          setModalWaitingList(false);
+          setModalWaitingList((prev) => {
+            return { ...prev, visible: false };
+          });
         }}
       />
       <Header onScrollIntoSignUp={onScrollIntoSignUp} />
@@ -185,7 +195,7 @@ export default function Home({ initialUsers }) {
               </Col>
               <Col span={24} className="component_form">
                 <FormWrapper className="cta_form_wrapper">
-                  <Form onFinish={onSubmitRegister}>
+                  <Form form={firstForm} onFinish={onSubmitRegister}>
                     <Row className="component_form_row">
                       <Col span={24}>
                         <Form.Item
@@ -214,7 +224,7 @@ export default function Home({ initialUsers }) {
                             },
                             {
                               validator(_, value) {
-                                if (email && !onValidateEmail(value)) {
+                                if (value && !onValidateEmail(value)) {
                                   return Promise.reject(
                                     new Error("Please enter valid email")
                                   );
@@ -233,6 +243,7 @@ export default function Home({ initialUsers }) {
                           block
                           type="primary"
                           size="middle"
+                          loading={isLoading}
                         >
                           Sign Up
                         </Button>
@@ -594,20 +605,56 @@ export default function Home({ initialUsers }) {
           </Col>
           <Col span={24} className="container_cta_list">
             <FormWrapper className="cta_form_wrapper">
-              <Form>
+              <Form form={secondForm} onFinish={onSubmitRegister}>
                 <Row className="component_form_row">
                   <Col span={24}>
-                    <Form.Item name="name">
+                    <Form.Item
+                      name="name"
+                      rules={[
+                        {
+                          required: true,
+                          message: "Please enter your full name",
+                        },
+                      ]}
+                    >
                       <Input placeholder="Full name" />
                     </Form.Item>
                   </Col>
                   <Col span={24}>
-                    <Form.Item name="email">
+                    <Form.Item
+                      name="email"
+                      rules={[
+                        {
+                          required: true,
+                          message: "Please enter your email",
+                        },
+                        {
+                          type: "email",
+                          message: "Please enter valid email",
+                        },
+                        {
+                          validator(_, value) {
+                            if (value && !onValidateEmail(value)) {
+                              return Promise.reject(
+                                new Error("Please enter valid email")
+                              );
+                            }
+                            return Promise.resolve();
+                          },
+                        },
+                      ]}
+                    >
                       <Input placeholder="Email" />
                     </Form.Item>
                   </Col>
                   <Col span={24}>
-                    <Button block type="primary" size="middle">
+                    <Button
+                      htmlType="submit"
+                      block
+                      type="primary"
+                      size="middle"
+                      loading={isLoading}
+                    >
                       Sign Up
                     </Button>
                   </Col>
@@ -868,35 +915,6 @@ export default function Home({ initialUsers }) {
           </Col>
         </Row>
       </FooterWrapper>
-      <form onSubmit={formHandle}>
-        <input
-          className="bg-white rounded-sm border border-indigo-700"
-          type="text"
-          onChange={(e) => {
-            return setFullName(e.target.value);
-          }}
-          value={fullName}
-        />
-        <input
-          className="bg-white rounded-sm border border-indigo-700"
-          type="text"
-          onChange={(e) => {
-            return setEmail(e.target.value);
-          }}
-          value={email}
-        />
-        <button>Submit</button>
-      </form>
-
-      {users.map((u, index) => {
-        return (
-          <div className="flex" key={index}>
-            <p>
-              {u.fullName}| {u.email} | {u.dateCreated?.toISOString()}
-            </p>
-          </div>
-        );
-      })}
     </Wrapper>
   );
 }

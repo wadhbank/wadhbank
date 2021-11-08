@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { Prisma } from "prisma";
 import Head from "next/head";
 import Image from "next/image";
 import { signOut } from "next-auth/client";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/client";
 import { Col, Row, Menu, Spin } from "antd";
+import moment from "moment";
+import prisma from "../../lib/prisma";
 import {
   IconChevronDown,
   IconChevronLeft,
@@ -16,9 +19,8 @@ import {
 } from "../../assets";
 import Wrapper, { DropdownMenus, Header, PaginationCustom } from "./style";
 import { Table, Button } from "../../components";
-import { waitingList } from "./dummy";
-import columns from "./column.table";
 import URL from "../../configs/baseUrl";
+import { numberFormatter } from "../../utils/commonUtils";
 
 const menu = (
   <Menu className="component_dropdown_menus">
@@ -54,19 +56,20 @@ const menu = (
   </Menu>
 );
 
+export async function getServerSideProps() {
+  const users: Prisma.UserUncheckedCreateInput[] = await prisma.user.findMany();
+  return {
+    props: { initialUsers: users },
+  };
+}
+
 const pageSize = 25;
-export default function Index() {
+const Index = ({ initialUsers }) => {
+  const [userList] = useState<Prisma.UserUncheckedCreateInput[]>(initialUsers);
   const router = useRouter();
 
   const [session, loading] = useSession();
   const [currentPage, setCurrentPage] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
-  const [userList, setUserList] = useState([]);
-
-  useEffect(() => {
-    setUserList(waitingList);
-    setIsLoading(false);
-  }, []);
 
   const isSessionValid = (session) => {
     if (
@@ -93,10 +96,39 @@ export default function Index() {
     const indexOfLast = (currentPage + 1) * pageSize;
     const indexOfFirst = indexOfLast - pageSize;
     const currentData = userList?.slice(indexOfFirst, indexOfLast);
-    const startIndex = currentPage * pageSize + 1;
-    const endIndex = currentPage * pageSize + currentData?.length;
-    return `Showing ${startIndex}-${endIndex} data of ${userList?.length} data`;
+    const startIndex = numberFormatter(currentPage * pageSize + 1);
+    const endIndex = numberFormatter(
+      currentPage * pageSize + currentData?.length
+    );
+    return `Showing ${startIndex}-${endIndex} data of ${numberFormatter(
+      userList?.length
+    )} data`;
   };
+
+  const columns = [
+    {
+      title: "No.",
+      dataIndex: "id",
+      render: (value, record, index) => {
+        return currentPage * pageSize + index + 1;
+      },
+    },
+    {
+      title: "Email",
+      dataIndex: "email",
+    },
+    {
+      title: "Full Name",
+      dataIndex: "fullName",
+    },
+    {
+      title: "Registered Date",
+      dataIndex: "dateCreated",
+      render: (record) => {
+        return moment(record)?.format("DD MMM YYYY");
+      },
+    },
+  ];
 
   return (
     <Wrapper>
@@ -168,7 +200,9 @@ export default function Index() {
               >
                 <Col className="component_waiting_list_table_header_total">
                   Total user on waiting list:&nbsp;
-                  <span className="component_total_bold">{`${userList?.length} people`}</span>
+                  <span className="component_total_bold">{`${numberFormatter(
+                    userList?.length
+                  )} people`}</span>
                 </Col>
                 {userList?.length !== 0 && (
                   <Col className="component_waiting_list_table_header_pagination">
@@ -203,9 +237,8 @@ export default function Index() {
             <Col span={24} className="component_waiting_list_table_content">
               <Table
                 dataSource={userList}
-                columns={columns({ currentPage, pageSize })}
+                columns={columns}
                 rowKey="id"
-                loading={isLoading}
                 pagination={{
                   pageSize,
                   style: { display: "none" },
@@ -218,4 +251,6 @@ export default function Index() {
       </Col>
     </Wrapper>
   );
-}
+};
+
+export default Index;

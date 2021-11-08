@@ -3,9 +3,11 @@ import fonts from "../configs/fonts";
 import breakpoints from "../configs/breakpoints";
 import colors from "../configs/colors";
 
-export const Wrapper = styled.div`
+const Wrapper = styled.div`
   font-family: Raleway;
 `;
+
+export default Wrapper;
 
 export const HeroWrapper = styled.div`
   overflow: hidden;
@@ -1384,13 +1386,13 @@ export const FAQWrapper = styled.div`
         gap: 12px;
         flex: 1;
         .component_faq_collapse_expand_icon {
-          transform: rotate(0deg);
+          transform: rotate(180deg);
           transition: 0.3s ease-in-out;
           position: relative;
           order: 1;
           right: 0;
           &.active {
-            transform: rotate(180deg);
+            transform: rotate(0deg);
           }
           path {
             fill: ${colors.black60};
@@ -1710,13 +1712,12 @@ export const FooterWrapper = styled.div`
                     display: flex;
                     flex-direction: row;
                     gap: 24px;
-                    > * :not(:nth-child(2)) {
+                    > * {
+                      cursor: pointer;
                       path {
                         fill: ${colors.black50};
                       }
-                    }
-                    > :nth-child(2) {
-                      path {
+                      :hover path {
                         fill: ${colors.blue70};
                       }
                     }
@@ -1872,6 +1873,10 @@ export const FooterWrapper = styled.div`
             .container_footer_secondary_services_list_item {
               ${fonts.font_small_medium};
               color: ${colors.black100};
+              cursor: pointer;
+              :hover {
+                text-decoration: underline;
+              }
             }
           }
         }
