@@ -6,7 +6,7 @@ import { useMediaQuery } from "react-responsive";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import "antd/dist/antd.less";
+// import "antd/dist/antd.less";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -217,10 +217,6 @@ export default function Home({ initialUsers }) {
                             {
                               required: true,
                               message: "Please enter your email",
-                            },
-                            {
-                              type: "email",
-                              message: "Please enter valid email",
                             },
                             {
                               validator(_, value) {

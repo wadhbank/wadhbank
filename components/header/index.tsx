@@ -59,7 +59,7 @@ const Index = (props) => {
                       pathname === item?.to ? "active" : ""
                     }`}
                   >
-                    <Link href={item?.to}>{item?.label}</Link>
+                    <Link href="/">{item?.label}</Link>
                   </Col>
                 );
               })}
