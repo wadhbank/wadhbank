@@ -625,10 +625,6 @@ export default function Home({ initialUsers }) {
                           message: "Please enter your email",
                         },
                         {
-                          type: "email",
-                          message: "Please enter valid email",
-                        },
-                        {
                           validator(_, value) {
                             if (value && !onValidateEmail(value)) {
                               return Promise.reject(
