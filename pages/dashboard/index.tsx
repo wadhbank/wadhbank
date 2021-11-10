@@ -142,7 +142,7 @@ const Index = ({ initialUsers }) => {
           <Col
             className="component_logo"
             onClick={() => {
-              router.push(URL.LANDING);
+              router.push(URL.DASHBOARD);
             }}
           >
             <Image src={ImageWadhbank} alt="wadhbank" objectFit="cover" />

@@ -21,6 +21,7 @@ export const Wrapper = styled.div`
       display: flex;
       align-items: center;
       width: 141px;
+      cursor: pointer;
     }
     .component_nav {
       .component_nav_list {

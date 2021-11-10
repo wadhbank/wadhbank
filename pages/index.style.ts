@@ -1566,9 +1566,12 @@ export const CTAWrapper = styled.div`
         display: flex;
         justify-content: center;
         column-gap: 40px !important;
-        .component_cta_benefit_icon svg {
-          height: 24px;
-          width: 24px;
+        .component_cta_benefit_icon {
+          display: grid;
+          svg {
+            height: 24px;
+            width: 24px;
+          }
         }
         .component_cta_benefit_label {
           ${fonts.font_large};

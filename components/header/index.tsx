@@ -46,7 +46,13 @@ const Index = (props) => {
     <>
       <Wrapper expand={showMenus}>
         <Row className="container_header">
-          <Col className="component_logo">
+          <Col
+            className="component_logo"
+            aria-hidden
+            onClick={() => {
+              router.push(URL.LANDING);
+            }}
+          >
             <Image src={ImageWadhbank} alt="wadhbank" objectFit="cover" />
           </Col>
           <Col className={`component_nav`}>

@@ -69,6 +69,9 @@ const Wrapper = styled.div`
           }
         }
         .component_waiting_list_table_header_pagination {
+          .component_pagination_showing {
+            color: ${colors.black60};
+          }
           .component_pagination_handler_arrow {
             .ant-btn {
               padding: 0;
@@ -183,6 +186,12 @@ export const DropdownMenus: typeof Dropdown = styled(Dropdown)`
 `;
 
 export const PaginationCustom = styled(Pagination)`
+  margin: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   .ant-pagination-item,
   .ant-pagination-jump-next,
   .ant-pagination-jump-prev {
@@ -193,6 +202,7 @@ export const PaginationCustom = styled(Pagination)`
     min-width: unset;
     width: unset;
     height: unset;
+    display: grid;
   }
   .ant-pagination-prev {
     margin-right: 12px;
