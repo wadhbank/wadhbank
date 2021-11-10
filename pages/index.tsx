@@ -713,7 +713,7 @@ export default function Home({ initialUsers }) {
                             <Row
                               gutter={8}
                               wrap
-                              align="bottom"
+                              align="middle"
                               className="component_footer_base_contact_content_row"
                             >
                               <Col className="component_footer_base_contact_content_icon">

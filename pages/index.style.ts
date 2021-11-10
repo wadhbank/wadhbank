@@ -1688,6 +1688,7 @@ export const FooterWrapper = styled.div`
                     gap: 16px !important;
                     .component_footer_base_contact_content {
                       .component_footer_base_contact_content_icon {
+                        display: grid;
                         svg {
                           height: 20px;
                           width: 20px;
