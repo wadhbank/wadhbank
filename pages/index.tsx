@@ -195,7 +195,11 @@ export default function Home({ initialUsers }) {
               </Col>
               <Col span={24} className="component_form">
                 <FormWrapper className="cta_form_wrapper">
-                  <Form form={firstForm} onFinish={onSubmitRegister}>
+                  <Form
+                    form={firstForm}
+                    onFinish={onSubmitRegister}
+                    className="error_message_absolute"
+                  >
                     <Row className="component_form_row">
                       <Col span={24}>
                         <Form.Item

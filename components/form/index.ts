@@ -10,10 +10,6 @@ const Form: typeof FormAntd = styled(FormAntd)`
     border-radius: 10px;
   }
 
-  .ant-form-item-explain.ant-form-item-explain-error {
-    margin-top: 1px;
-  }
-
   .ant-input {
     font-size: 14px;
     height: 44px;
@@ -77,6 +73,18 @@ const Form: typeof FormAntd = styled(FormAntd)`
   input:-internal-autofill-selected {
     background-color: red;
     color: yellow;
+  }
+
+  .ant-form-item-control {
+    position: relative;
+  }
+
+  &.error_message_absolute {
+    .ant-form-item-explain-error {
+      margin: 0 !important;
+      position: absolute;
+      bottom: -28px;
+    }
   }
 `;
 
