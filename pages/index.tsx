@@ -84,6 +84,7 @@ export default function Home({ initialUsers }) {
   const prevSlideBtn = useRef(null);
   const nextSlideBtn = useRef(null);
   const signUpForm = useRef(null);
+  const faqRef = useRef(null);
   const [firstForm] = Form.useForm();
   const [secondForm] = Form.useForm();
 
@@ -117,6 +118,13 @@ export default function Home({ initialUsers }) {
 
   const onScrollIntoSignUp = () => {
     signUpForm.current.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+  };
+
+  const onScrollIntoFAQSection = () => {
+    faqRef.current.scrollIntoView({
       behavior: "smooth",
       block: "center",
     });
@@ -189,9 +197,13 @@ export default function Home({ initialUsers }) {
               <Col span={24} className="component_invitation">
                 Join our waiting list to get early access to halal, ethical
                 banking services.&nbsp;
-                <Link passHref href="/">
-                  <span className="learn_more">Learn more</span>
-                </Link>
+                <span
+                  aria-hidden
+                  onClick={onScrollIntoFAQSection}
+                  className="learn_more"
+                >
+                  Learn more
+                </span>
               </Col>
               <Col span={24} className="component_form">
                 <FormWrapper className="cta_form_wrapper">
@@ -541,7 +553,7 @@ export default function Home({ initialUsers }) {
         </Col>
       </TestimonialWrapper>
       <FAQWrapper>
-        <Row className="faq_section_wrapper">
+        <Row ref={faqRef} className="faq_section_wrapper">
           <Col span={24} className="container_faq_heading">
             <Row
               align="middle"
