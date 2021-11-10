@@ -82,7 +82,7 @@ const Form: typeof FormAntd = styled(FormAntd)`
   &.error_message_absolute {
     .ant-form-item-explain-error {
       margin: 0 !important;
-      position: absolute;
+      position: absolute !important;
       bottom: -28px;
     }
   }
