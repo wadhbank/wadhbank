@@ -279,7 +279,12 @@ export default function Home({ initialUsers }) {
             </Row>
           </Col>
           <Col className="container_hero_image">
-            <Image src={ImageCardPodium} alt="card-podium" layout="intrinsic" />
+            <Image
+              src={ImageCardPodium}
+              alt="card-podium"
+              layout="intrinsic"
+              quality={100}
+            />
           </Col>
         </Row>
       </HeroWrapper>

@@ -2,6 +2,7 @@
 const withAntdLess = require("next-plugin-antd-less");
 module.exports = {
   reactStrictMode: true,
+  compress: false,
 };
 
 module.exports = withAntdLess({
