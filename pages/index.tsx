@@ -1,12 +1,10 @@
 import { useRef, useState } from "react";
 import { Prisma } from "prisma";
-import { Col, Row, Input, List, Collapse, message } from "antd";
+import { Col, Row, Input, Collapse, message } from "antd";
 import SwiperCore, { Pagination, Navigation } from "swiper";
 import { useMediaQuery } from "react-responsive";
 import Head from "next/head";
 import Image from "next/image";
-import Link from "next/link";
-// import "antd/dist/antd.less";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -80,6 +78,7 @@ export default function Home({ initialUsers }) {
     totalUsers: null,
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [isActiveInvitationRow, setIsActiveInvitationRow] = useState("01");
 
   const prevSlideBtn = useRef(null);
   const nextSlideBtn = useRef(null);
@@ -89,6 +88,7 @@ export default function Home({ initialUsers }) {
   const [secondForm] = Form.useForm();
 
   const desktopScreen = useMediaQuery({ maxWidth: breakpoints.desktop });
+  const tabLargeScreen = useMediaQuery({ maxWidth: breakpoints.tab_large });
   const tabScreen = useMediaQuery({ maxWidth: breakpoints.tab });
   const phoneScreen = useMediaQuery({ maxWidth: breakpoints.phone });
 
@@ -460,22 +460,46 @@ export default function Home({ initialUsers }) {
                 <Image src={ImageSkeletonCard} alt="" layout="intrinsic" />
               </Col>
               <Col className="component_invitation_list">
-                <List
-                  itemLayout="horizontal"
-                  bordered={false}
-                  dataSource={invitationList}
-                  renderItem={(item) => {
+                <Collapse
+                  accordion={!tabLargeScreen}
+                  ghost
+                  className="component_invitation_collapse"
+                  activeKey={(() => {
+                    if (!tabLargeScreen) return isActiveInvitationRow;
+                    return ["01", "02", "03"];
+                  })()}
+                >
+                  {invitationList?.map((item) => {
                     return (
-                      <List.Item key={item?.key}>
-                        <List.Item.Meta
-                          avatar={item?.key}
-                          title={item?.label}
-                          description={item?.desc}
-                        />
-                      </List.Item>
+                      <Collapse.Panel
+                        key={item?.key}
+                        header={(() => {
+                          return (
+                            <Row
+                              aria-hidden
+                              onClick={() => {
+                                const key = item?.key;
+                                setIsActiveInvitationRow(key);
+                              }}
+                              className="component_invitation_collapse"
+                            >
+                              <Col className="component_invitation_collapse_key">
+                                {item?.key}
+                              </Col>
+                              <Col className="component_invitation_collapse_label">
+                                {item?.label}
+                              </Col>
+                            </Row>
+                          );
+                        })()}
+                        showArrow={false}
+                        className="component_invitation_collapse_panel"
+                      >
+                        {item?.desc}
+                      </Collapse.Panel>
                     );
-                  }}
-                />
+                  })}
+                </Collapse>
               </Col>
             </Row>
           </Col>

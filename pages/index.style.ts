@@ -894,77 +894,77 @@ export const InvitationWrapper = styled.div`
           flex: 1;
           margin-top: 50px;
           margin-bottom: 200px;
-          .ant-list {
-            max-width: 613px;
-            min-width: 613px;
-            padding: 0;
-            .ant-list-items {
-              .ant-list-item {
-                border-bottom: 1px solid ${colors.black50};
-                cursor: pointer;
+          max-width: 613px;
+          min-width: 613px;
+          .component_invitation_collapse_panel {
+            border-bottom: 1px solid ${colors.black30};
+            cursor: pointer;
+            padding: 40px 0;
+            :nth-child(1) {
+              padding: 0 0 40px 0;
+              .component_invitation_collapse_label {
+                max-width: 507px;
+              }
+              .ant-collapse-content-box {
+                max-width: 507px;
+              }
+            }
+            :nth-child(2) {
+              .component_invitation_collapse_label {
+                max-width: 507px;
+              }
+              .ant-collapse-content-box {
+                max-width: 507px;
+              }
+            }
+            :nth-child(3) {
+              .component_invitation_collapse_label {
+                max-width: 542px;
+              }
+              .ant-collapse-content-box {
+                max-width: 507px;
+              }
+            }
+
+            .component_invitation_collapse {
+              display: grid !important;
+              grid-template-columns: auto 1fr;
+              gap: 40px;
+              .component_invitation_collapse_key {
+                color: ${colors.black50};
                 transition: 0.3s ease-in-out;
-                .ant-list-item-meta {
-                  .ant-list-item-meta-avatar {
-                    margin-right: 40px;
-                    ${fonts.font_heading_6};
-                    color: ${colors.black50};
-                    transition: 0.3s ease-in-out;
-                  }
-                  .ant-list-item-meta-content {
-                    .ant-list-item-meta-title {
-                      ${fonts.font_heading_5};
-                      color: ${colors.black50};
-                      transition: 0.3s ease-in-out;
-                      margin: 0;
-                    }
-                    .ant-list-item-meta-description {
-                      ${fonts.font_normal};
-                      color: ${colors.black50};
-                      transition: 0.3s ease-in-out;
-                      max-height: 0;
-                      margin-top: 0;
-                      overflow: hidden;
-                      max-width: 507px;
-                    }
-                  }
-                }
-                :hover {
-                  border-color: ${colors.black100};
-                  .ant-list-item-meta {
-                    .ant-list-item-meta-avatar {
-                      color: ${colors.black100};
-                    }
-                    .ant-list-item-meta-title {
-                      color: ${colors.black100};
-                    }
-                    .ant-list-item-meta-description {
-                      color: ${colors.black100};
-                      max-height: 100px;
-                      margin-top: 24px;
-                    }
-                  }
-                }
-                :first-child {
-                  padding: 0 0 40px 0;
-                }
-                :not(:first-child) {
-                  padding: 40px 0;
-                }
-                :nth-child(1) {
-                  .ant-list-item-meta-title {
-                    max-width: 507px;
-                  }
-                }
-                :nth-child(2) {
-                  .ant-list-item-meta-title {
-                    max-width: 502px;
-                  }
-                }
-                :nth-child(3) {
-                  .ant-list-item-meta-title {
-                    max-width: 542px;
-                  }
-                }
+                ${fonts.font_heading_6};
+              }
+              .component_invitation_collapse_label {
+                ${fonts.font_heading_5};
+                color: ${colors.black50};
+                transition: 0.3s ease-in-out;
+                margin: 0;
+              }
+            }
+            .ant-collapse-header {
+              padding: 0;
+            }
+            .ant-collapse-content-box {
+              ${fonts.font_normal};
+              margin-left: 70px;
+              margin-top: 24px;
+              color: ${colors.black50};
+              padding: 0;
+            }
+            &.ant-collapse-item-active {
+              border-color: ${colors.black100};
+              color: ${colors.black100};
+              .component_invitation_collapse_key {
+                color: ${colors.black100};
+                transition: 0.3s ease-in-out;
+              }
+              .component_invitation_collapse_label {
+                color: ${colors.black100};
+                transition: 0.3s ease-in-out;
+              }
+              .ant-collapse-content-box {
+                color: ${colors.black100};
               }
             }
           }
@@ -982,36 +982,15 @@ export const InvitationWrapper = styled.div`
             flex: 1;
             margin-top: 40px;
             margin-bottom: 200px;
-            .ant-list {
-              max-width: 513px;
-              min-width: 513px;
-              .ant-list-items {
-                .ant-list-item {
-                  .ant-list-item-meta {
-                    .ant-list-item-meta-content {
-                      .ant-list-item-meta-title {
-                        ${fonts.font_heading_6};
-                      }
-                      .ant-list-item-meta-description {
-                        ${fonts.font_small};
-                      }
-                    }
-                  }
-                  :nth-child(1) {
-                    .ant-list-item-meta-title {
-                      max-width: 390px;
-                    }
-                  }
-                  :nth-child(2) {
-                    .ant-list-item-meta-title {
-                      max-width: 390px;
-                    }
-                  }
-                  :nth-child(3) {
-                    .ant-list-item-meta-title {
-                      max-width: 420px;
-                    }
-                  }
+            max-width: 440px;
+            min-width: 440px;
+            .component_invitation_collapse_panel {
+              .component_invitation_collapse {
+                .component_invitation_collapse_key {
+                  ${fonts.font_heading_6};
+                }
+                .component_invitation_collapse_label {
+                  ${fonts.font_heading_6};
                 }
               }
             }
@@ -1044,32 +1023,46 @@ export const InvitationWrapper = styled.div`
           .component_invitation_list {
             margin-top: 0;
             margin-bottom: 200px;
-            .ant-list {
-              max-width: unset;
-              min-width: unset;
-              margin: 0 auto;
-              .ant-list-items {
-                .ant-list-item {
-                  border-bottom: 1px solid ${colors.black30};
-                  .ant-list-item-meta {
-                    max-width: 513px;
-                    min-width: 513px;
-                    .ant-list-item-meta-avatar {
-                      margin-right: 40px;
-                      color: ${colors.black100};
-                    }
-                    .ant-list-item-meta-content {
-                      .ant-list-item-meta-title {
-                        color: ${colors.black100};
-                      }
-                      .ant-list-item-meta-description {
-                        color: ${colors.black80};
-                        max-height: unset;
-                        margin-top: 24px;
-                      }
-                    }
-                  }
+            max-width: unset;
+            min-width: unset;
+            .component_invitation_collapse_panel {
+              cursor: pointer;
+              padding: 40px 0;
+              :first-child {
+                padding: 0 0 40px 0;
+              }
+              :nth-child(1) {
+                padding: 0 0 40px 0;
+                .component_invitation_collapse_label {
+                  max-width: 380px;
                 }
+                .ant-collapse-content-box {
+                  max-width: 490px;
+                }
+              }
+              :nth-child(2) {
+                .component_invitation_collapse_label {
+                  max-width: 380px;
+                }
+                .ant-collapse-content-box {
+                  max-width: 520px;
+                }
+              }
+              :nth-child(3) {
+                .component_invitation_collapse_label {
+                  max-width: 420px;
+                }
+                .ant-collapse-content-box {
+                  max-width: 500px;
+                }
+              }
+              .component_invitation_collapse {
+                max-width: unset;
+                min-width: unset;
+                margin: 0 auto;
+              }
+              &.ant-collapse-item-active {
+                border-color: ${colors.black30};
               }
             }
           }
@@ -1123,37 +1116,47 @@ export const InvitationWrapper = styled.div`
       .container_invitation_list {
         .component_invitation_list_row {
           .component_invitation_list {
-            .ant-list {
-              .ant-list-items {
-                .ant-list-item {
-                  .ant-list-item-meta {
-                    max-width: 328px;
-                    min-width: 0;
-                    .ant-list-item-meta-avatar {
-                      margin-right: 16px;
-                      color: ${colors.black100};
-                      ${fonts.font_normal_bold};
-                    }
-                    .ant-list-item-meta-content {
-                      .ant-list-item-meta-title {
-                        color: ${colors.black100};
-                        max-width: 100% !important;
-                        ${fonts.font_normal_bold};
-                      }
-                      .ant-list-item-meta-description {
-                        color: ${colors.black80};
-                        max-height: unset;
-                        margin-top: 16px;
-                      }
-                    }
-                  }
-                  :first-child {
-                    padding: 0 0 24px 0;
-                  }
-                  :not(:first-child) {
-                    padding: 24px 0;
-                  }
+            .component_invitation_collapse_panel {
+              padding: 24px 0;
+              :nth-child(1) {
+                padding: 0 0 24px 0;
+                .component_invitation_collapse_label {
+                  max-width: 280px;
                 }
+                .ant-collapse-content-box {
+                  max-width: 280px;
+                }
+              }
+              :nth-child(2) {
+                .component_invitation_collapse_label {
+                  max-width: 280px;
+                }
+                .ant-collapse-content-box {
+                  max-width: 290px;
+                }
+              }
+              :nth-child(3) {
+                .component_invitation_collapse_label {
+                  max-width: 280px;
+                }
+                .ant-collapse-content-box {
+                  max-width: 280px;
+                }
+              }
+
+              .component_invitation_collapse {
+                gap: 16px;
+                .component_invitation_collapse_key {
+                  ${fonts.font_normal_bold};
+                }
+                .component_invitation_collapse_label {
+                  ${fonts.font_normal_bold};
+                }
+              }
+              .ant-collapse-content-box {
+                margin-top: 16px;
+                margin-left: 34px;
+                ${fonts.font_small};
               }
             }
           }
