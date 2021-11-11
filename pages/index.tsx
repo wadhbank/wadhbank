@@ -793,11 +793,41 @@ export default function Home({ initialUsers }) {
                             span={24}
                             className="component_footer_base_social_media_list"
                           >
-                            <IconInstagram />
-                            <IconFacebook />
-                            <IconTwitter />
-                            <IconLinkedin />
-                            <IconTiktok />
+                            <a
+                              target="_blank"
+                              href={"//www.instagram.com/wadhbank"}
+                              rel="noreferrer"
+                            >
+                              <IconInstagram />
+                            </a>
+                            <a
+                              target="_blank"
+                              href={"//www.facebook.com/wadhbank"}
+                              rel="noreferrer"
+                            >
+                              <IconFacebook />
+                            </a>
+                            <a
+                              target="_blank"
+                              href={"//www.twitter.com/wadhbank"}
+                              rel="noreferrer"
+                            >
+                              <IconTwitter />
+                            </a>
+                            <a
+                              target="_blank"
+                              href={"//www.linkedin.com/company/wadhbank/"}
+                              rel="noreferrer"
+                            >
+                              <IconLinkedin />
+                            </a>
+                            <a
+                              target="_blank"
+                              href={"//www.tiktok.com/@wadhbank"}
+                              rel="noreferrer"
+                            >
+                              <IconTiktok />
+                            </a>
                           </Col>
                         </Row>
                       </Col>
