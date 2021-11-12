@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Form as FormAntd } from "antd";
 import colors from "../../configs/colors";
 import fonts from "../../configs/fonts";
+import breakpoints from "../../configs/breakpoints";
 
 const Form: typeof FormAntd = styled(FormAntd)`
   font-family: Raleway;
@@ -70,10 +71,6 @@ const Form: typeof FormAntd = styled(FormAntd)`
       }
     }
   }
-  input:-internal-autofill-selected {
-    background-color: red;
-    color: yellow;
-  }
 
   .ant-form-item-control {
     position: relative;
@@ -84,6 +81,13 @@ const Form: typeof FormAntd = styled(FormAntd)`
       margin: 0 !important;
       position: absolute !important;
       bottom: -28px;
+    }
+    @media screen and (max-width: ${breakpoints.tab_large}) {
+      .ant-form-item-explain-error {
+        margin-bottom: 8px !important;
+        position: relative !important;
+        bottom: unset;
+      }
     }
   }
 `;
