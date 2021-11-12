@@ -210,7 +210,7 @@ export default function Home({ initialUsers }) {
                   <Form
                     form={firstForm}
                     onFinish={onSubmitRegister}
-                    className="error_message_absolute"
+                    className={tabScreen ? "" : "error_message_absolute"}
                   >
                     <Row className="component_form_row">
                       <Col span={24}>

@@ -1061,8 +1061,29 @@ export const InvitationWrapper = styled.div`
                 min-width: unset;
                 margin: 0 auto;
               }
+              &.ant-collapse-item {
+                border-color: ${colors.black30} !important;
+                .component_invitation_collapse_key {
+                  color: ${colors.black100};
+                }
+                .component_invitation_collapse_label {
+                  color: ${colors.black100};
+                }
+                .ant-collapse-content-box {
+                  color: ${colors.black100};
+                }
+              }
               &.ant-collapse-item-active {
-                border-color: ${colors.black30};
+                border-color: ${colors.black30} !important;
+                .component_invitation_collapse_key {
+                  color: ${colors.black100};
+                }
+                .component_invitation_collapse_label {
+                  color: ${colors.black100};
+                }
+                .ant-collapse-content-box {
+                  color: ${colors.black100};
+                }
               }
             }
           }
