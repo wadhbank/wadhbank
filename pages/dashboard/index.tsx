@@ -22,39 +22,42 @@ import { Table, Button } from "../../components";
 import URL from "../../configs/baseUrl";
 import { numberFormatter } from "../../utils/commonUtils";
 
-const menu = (
-  <Menu className="component_dropdown_menus">
-    <Menu.Item key="0" className="component_dropdown_menus_item account">
-      <Row gutter={[4, 4]}>
-        <Col span={24} className="component_account">
-          john.doe@gmail.com
-        </Col>
-        <Col span={24} className="component_account_role">
-          Admin
-        </Col>
-      </Row>
-    </Menu.Item>
-    <Menu.Divider />
-    <Menu.Item key="1" className="component_dropdown_menus_item links">
-      <Row gutter={[4, 4]}>
-        <Col
-          span={24}
-          className="component_link"
-          onClick={() => {
-            signOut({ redirect: false, callbackUrl: URL.LOGIN });
-          }}
-        >
-          <Row gutter={12} align="middle">
-            <Col>
-              <IconLogout />
-            </Col>
-            <Col>Logout</Col>
-          </Row>
-        </Col>
-      </Row>
-    </Menu.Item>
-  </Menu>
-);
+const menu = (props) => {
+  const { currentEmail } = props;
+  return (
+    <Menu className="component_dropdown_menus">
+      <Menu.Item key="0" className="component_dropdown_menus_item account">
+        <Row gutter={[4, 4]}>
+          <Col span={24} className="component_account">
+            {currentEmail || ""}
+          </Col>
+          <Col span={24} className="component_account_role">
+            Admin
+          </Col>
+        </Row>
+      </Menu.Item>
+      <Menu.Divider />
+      <Menu.Item key="1" className="component_dropdown_menus_item links">
+        <Row gutter={[4, 4]}>
+          <Col
+            span={24}
+            className="component_link"
+            onClick={() => {
+              signOut({ redirect: false, callbackUrl: URL.LOGIN });
+            }}
+          >
+            <Row gutter={12} align="middle">
+              <Col>
+                <IconLogout />
+              </Col>
+              <Col>Logout</Col>
+            </Row>
+          </Col>
+        </Row>
+      </Menu.Item>
+    </Menu>
+  );
+};
 
 export async function getServerSideProps() {
   const users: Prisma.UserUncheckedCreateInput[] = await prisma.user.findMany();
@@ -71,6 +74,7 @@ const Index = ({ initialUsers }) => {
   const [session, loading] = useSession();
   const [currentPage, setCurrentPage] = useState(0);
   const [excelPackage, setExcelPackage] = useState();
+  const currentEmail = session?.user?.email;
 
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -170,7 +174,7 @@ const Index = ({ initialUsers }) => {
           <Col className="component_menus">
             <DropdownMenus
               trigger={["click"]}
-              overlay={menu}
+              overlay={menu({ currentEmail })}
               overlayClassName="component_menus_overlay"
               getPopupContainer={(trigger) => {
                 return trigger;
