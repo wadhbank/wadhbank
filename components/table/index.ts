@@ -51,6 +51,18 @@ const Table: typeof TableAntd = styled(TableAntd)`
     > th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before {
     width: 0px;
   }
+
+  &.hide-sort {
+    td.ant-table-column-sort {
+      background-color: unset;
+    }
+    .ant-table-thead th.ant-table-column-has-sorters {
+      cursor: unset;
+    }
+    .ant-table-thead th.ant-table-column-has-sorters:hover {
+      background-color: unset;
+    }
+  }
 `;
 
 export default Table;

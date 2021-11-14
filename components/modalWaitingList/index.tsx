@@ -1,6 +1,12 @@
 import { Col, Row } from "antd";
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  LinkedinShareButton,
+} from "react-share";
 import { Modal } from "..";
 import { IconFacebook, IconLinkedin, IconTwitter } from "../../assets";
+import { numberFormatter } from "../../utils/commonUtils";
 import ModalWrapper from "./style";
 
 const Index = (props) => {
@@ -26,7 +32,7 @@ const Index = (props) => {
           </Col>
           <Col className="component_modal_waiting_list_sequence">
             There are&nbsp;
-            <span className="bold">{totalUsers - 1}</span>
+            <span className="bold">{numberFormatter(totalUsers - 1)}</span>
             &nbsp;people ahead of you
           </Col>
           <Col className="component_modal_waiting_list_social_share">
@@ -34,9 +40,25 @@ const Index = (props) => {
             early-bird advantages
           </Col>
           <Col className="component_modal_waiting_list_social_list">
-            <IconFacebook />
-            <IconTwitter />
-            <IconLinkedin />
+            <FacebookShareButton
+              quote="It's here! Check out our new website"
+              url="https://wadhbank-next.vercel.app/"
+            >
+              <IconFacebook />
+            </FacebookShareButton>
+
+            <TwitterShareButton
+              title="It's here! Check out our new website"
+              url="https://wadhbank-next.vercel.app/"
+            >
+              <IconTwitter />
+            </TwitterShareButton>
+            <LinkedinShareButton
+              url="https://wadhbank-next.vercel.app/"
+              title="It's here! Check out our new website"
+            >
+              <IconLinkedin />
+            </LinkedinShareButton>
           </Col>
         </Row>
       </ModalWrapper>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Prisma } from "prisma";
 import Head from "next/head";
 import Image from "next/image";
@@ -70,6 +70,14 @@ const Index = ({ initialUsers }) => {
 
   const [session, loading] = useSession();
   const [currentPage, setCurrentPage] = useState(0);
+  const [excelPackage, setExcelPackage] = useState();
+
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const { Excel } = require("antd-table-saveas-excel");
+    const excel = new Excel();
+    setExcelPackage(excel);
+  }, []);
 
   const isSessionValid = (session) => {
     if (
@@ -105,12 +113,23 @@ const Index = ({ initialUsers }) => {
     )} data`;
   };
 
-  const columns = [
+  const columns: any = [
     {
       title: "No.",
       dataIndex: "id",
-      render: (value, record, index) => {
-        return currentPage * pageSize + index + 1;
+      sorter: (a, b) => {
+        return a?.id - b?.id;
+      },
+      sortOrder: "descend",
+      sortDirections: [],
+      showSorterTooltip: false,
+      render: (value) => {
+        const selected = userList
+          ?.map((item) => {
+            return item?.id;
+          })
+          .indexOf(value);
+        return numberFormatter(selected + 1);
       },
     },
     {
@@ -178,7 +197,19 @@ const Index = ({ initialUsers }) => {
                 Waiting List
               </Col>
               <Col className="component_waiting_list_header_export">
-                <Button type="default">
+                <Button
+                  type="default"
+                  onClick={() => {
+                    if (excelPackage) {
+                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                      (excelPackage as any)
+                        .addSheet("wadhbank-waiting-list")
+                        .addColumns(columns)
+                        .addDataSource(userList)
+                        .saveAs("wadhbank-waiting-list.xlsx");
+                    }
+                  }}
+                >
                   <Row align="middle" gutter={16}>
                     <Col className="component_waiting_list_header_export_icon">
                       <IconFile />
@@ -238,6 +269,7 @@ const Index = ({ initialUsers }) => {
               <Table
                 dataSource={userList}
                 columns={columns}
+                className="hide-sort"
                 rowKey="id"
                 pagination={{
                   pageSize,
