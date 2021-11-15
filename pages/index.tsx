@@ -795,7 +795,7 @@ export default function Home({ initialUsers }) {
                           >
                             <a
                               target="_blank"
-                              href={"//www.instagram.com/wadhbank"}
+                              href={"//www.instagram.com/wadhbank/?hl=en"}
                               rel="noreferrer"
                             >
                               <IconInstagram />

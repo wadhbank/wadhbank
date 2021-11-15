@@ -1,4 +1,5 @@
 import { Col, Row } from "antd";
+import { useEffect, useState } from "react";
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -9,8 +10,19 @@ import { IconFacebook, IconLinkedin, IconTwitter } from "../../assets";
 import { numberFormatter } from "../../utils/commonUtils";
 import ModalWrapper from "./style";
 
+const bodyPost =
+  "I just signed up for WadhBank! Join me and let's make halal banking available for everyone! Visit wadhbank on www.wadhbank.com";
+
 const Index = (props) => {
   const { visible, onCancel, totalUsers, ...otherProps } = props;
+  const [originUrl, setOriginUrl] = useState("");
+
+  useEffect(() => {
+    if (window !== undefined) {
+      setOriginUrl(window.location.origin);
+    }
+  }, []);
+
   return (
     <Modal
       {...otherProps}
@@ -40,22 +52,17 @@ const Index = (props) => {
             early-bird advantages
           </Col>
           <Col className="component_modal_waiting_list_social_list">
-            <FacebookShareButton
-              quote="It's here! Check out our new website"
-              url="https://wadhbank-next.vercel.app/"
-            >
+            <FacebookShareButton quote={bodyPost} url={originUrl}>
               <IconFacebook />
             </FacebookShareButton>
 
-            <TwitterShareButton
-              title="It's here! Check out our new website"
-              url="https://wadhbank-next.vercel.app/"
-            >
+            <TwitterShareButton title={bodyPost} url={originUrl}>
               <IconTwitter />
             </TwitterShareButton>
             <LinkedinShareButton
-              url="https://wadhbank-next.vercel.app/"
-              title="It's here! Check out our new website"
+              url={originUrl}
+              source={originUrl}
+              title={bodyPost}
             >
               <IconLinkedin />
             </LinkedinShareButton>
