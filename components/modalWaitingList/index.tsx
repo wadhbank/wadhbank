@@ -11,6 +11,9 @@ import { numberFormatter } from "../../utils/commonUtils";
 import ModalWrapper from "./style";
 
 const bodyPost =
+  "I just signed up for WadhBank! Join me and let's make halal banking available for everyone! Visit wadhbank on";
+
+const bodyPostWithUrl =
   "I just signed up for WadhBank! Join me and let's make halal banking available for everyone! Visit wadhbank on www.wadhbank.com";
 
 const Index = (props) => {
@@ -52,7 +55,7 @@ const Index = (props) => {
             early-bird advantages
           </Col>
           <Col className="component_modal_waiting_list_social_list">
-            <FacebookShareButton quote={bodyPost} url={originUrl}>
+            <FacebookShareButton quote={bodyPostWithUrl} url={originUrl}>
               <IconFacebook />
             </FacebookShareButton>
 
@@ -63,6 +66,7 @@ const Index = (props) => {
               url={originUrl}
               source={originUrl}
               title={bodyPost}
+              summary={bodyPost}
             >
               <IconLinkedin />
             </LinkedinShareButton>

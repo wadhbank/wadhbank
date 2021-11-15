@@ -121,6 +121,7 @@ const Index = ({ initialUsers }) => {
     {
       title: "No.",
       dataIndex: "id",
+      width: "10%",
       sorter: (a, b) => {
         return a?.id - b?.id;
       },
@@ -207,7 +208,7 @@ const Index = ({ initialUsers }) => {
                     if (excelPackage) {
                       // eslint-disable-next-line @typescript-eslint/no-explicit-any
                       (excelPackage as any)
-                        .addSheet("wadhbank-waiting-list")
+                        .addSheet(`${"wadhbank-waiting-list"}-${Math.random()}`)
                         .addColumns(columns)
                         .addDataSource(userList)
                         .saveAs("wadhbank-waiting-list.xlsx");
