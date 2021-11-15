@@ -75,6 +75,8 @@ const Index = ({ initialUsers }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [excelPackage, setExcelPackage] = useState();
   const currentEmail = session?.user?.email;
+  const currentDate = moment()?.format("DD-MMM-YYYY");
+  console.log(currentDate);
 
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -211,7 +213,7 @@ const Index = ({ initialUsers }) => {
                         .addSheet(`${"wadhbank-waiting-list"}-${Math.random()}`)
                         .addColumns(columns)
                         .addDataSource(userList)
-                        .saveAs("wadhbank-waiting-list.xlsx");
+                        .saveAs(`wadhbank-waiting-list-${currentDate}.xlsx`);
                     }
                   }}
                 >
