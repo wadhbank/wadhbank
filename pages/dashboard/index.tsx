@@ -76,7 +76,6 @@ const Index = ({ initialUsers }) => {
   const [excelPackage, setExcelPackage] = useState();
   const currentEmail = session?.user?.email;
   const currentDate = moment()?.format("DD-MMM-YYYY");
-  console.log(currentDate);
 
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
