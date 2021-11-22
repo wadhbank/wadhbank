@@ -82,6 +82,9 @@ const Form: typeof FormAntd = styled(FormAntd)`
       position: absolute !important;
       bottom: -28px;
     }
+    .ant-form-item-with-help .ant-form-item-explain {
+      min-height: auto !important;
+    }
     @media screen and (max-width: ${breakpoints.tab_large}) {
       .ant-form-item-explain-error {
         margin-bottom: 8px !important;
