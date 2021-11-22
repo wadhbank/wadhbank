@@ -189,7 +189,7 @@ export default function Home({ initialUsers }) {
               </Col>
               <Col span={24}>
                 <Col className="component_subtitle">
-                  Combining transparent finance system and islamic financial
+                  Combining latest blockchain technology and islamic financial
                   guidelines to deliver safe and secure islamic banking service
                   through mobile platform.
                 </Col>
