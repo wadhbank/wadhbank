@@ -66,7 +66,7 @@ export async function getServerSideProps() {
   };
 }
 
-const pageSize = 25;
+const pageSize = 50;
 const Index = ({ initialUsers }) => {
   const [userList] = useState<Prisma.UserUncheckedCreateInput[]>(initialUsers);
   const router = useRouter();
