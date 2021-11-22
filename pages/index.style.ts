@@ -1059,7 +1059,7 @@ export const InvitationWrapper = styled.div`
               .component_invitation_collapse {
                 max-width: unset;
                 min-width: unset;
-                margin: 0 auto;
+                margin: 0;
               }
               &.ant-collapse-item {
                 border-color: ${colors.black30} !important;
