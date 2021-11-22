@@ -191,7 +191,7 @@ export default function Home({ initialUsers }) {
                 <Col className="component_subtitle">
                   Combining latest blockchain technology and islamic financial
                   guidelines to deliver safe and secure islamic banking service
-                  through mobile platform.
+                  through our mobile platform.
                 </Col>
               </Col>
               <Col span={24} className="component_invitation">
