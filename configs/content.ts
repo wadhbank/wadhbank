@@ -16,57 +16,57 @@ import {
 
 export const advantagesList = [
   {
-    label: "Shariah Compliant",
+    label: "Shariah compliant",
     desc: "Our certified shariah board keeps all of your banking needs in line with your faith.",
     icon: IconHalfMoon,
   },
   {
-    label: "Secure Blockchain Tech",
+    label: "Secure block-chain tech",
     desc: "The latest in technologies keeps your transactions safe and secure no matter where you are.",
     icon: IconShield,
   },
   {
-    label: "No Hidden Fees",
+    label: "No hidden fees",
     desc: "We believe our members deserve to keep their hard earned money. No hidden fees, no overdraft fees, and fully transparent.",
     icon: IconVisibleEye,
   },
   {
-    label: "Global Reach",
+    label: "Global reach",
     desc: "Sign up for our waiting list from anywhere in globe and become part of the ummah within seconds.",
     icon: IconGlobe,
   },
   {
-    label: "Free Personal Check",
+    label: "Free personal checking",
     desc: "Our basic personal checking options give you the ease of no monthly or annual fees, giving you freedom to do more.",
     icon: IconPersonalID,
   },
   {
-    label: "Smart Business Services",
+    label: "Smart business services",
     desc: "Whether you are a startup, small-business, or an established one, we are here for you with halal, riba-free commercial lending products and more.",
     icon: IconDoughnutChart,
   },
   {
-    label: "Simple Student Options",
+    label: "Simple student options",
     desc: "We know what it's like to be a student. Our mission is to provide you with interest-free student loans through refinancing or a new one.",
     icon: IconUserCheck,
   },
   {
-    label: "Curated Private Banking",
+    label: "Curated private banking",
     desc: "With nearly 150 years of experience in private banking and private equity, we can preserve and grow your capital.",
     icon: IconStarFilled,
   },
   {
-    label: "High-yield Savings",
+    label: "High-yield savings",
     desc: "With up to 5% annual yields, our high-yield savings accounts go beyond conventional banking competitors.",
     icon: IconChartUp,
   },
   {
-    label: "Fast Transfers",
+    label: "Fast transfers",
     desc: "Make seamless, secure instant transfers with other WadhBank users around the globe.",
     icon: IconTransfer,
   },
   {
-    label: "Keep Track",
+    label: "Keep track",
     desc: "Need help managing your day-to-day finances? Our robo-advisor can keep you up to date and assist you for all financial goals and needs.",
     icon: IconRobot,
   },
@@ -140,6 +140,14 @@ export const testimonialList = [
   {
     key: "6",
     name: "Participant 6",
+    gender: "female",
+    origin: "Former Rollins MSA President",
+    testimonial:
+      "WadhBank has the intention of ensuring that individuals get the full barakah of their wealth. Islamic finance is empowering for those who do not want to chose between their financial well-being and their morals.",
+  },
+  {
+    key: "7",
+    name: "Participant 7",
     gender: "female",
     origin: "Former Rollins MSA President",
     testimonial:

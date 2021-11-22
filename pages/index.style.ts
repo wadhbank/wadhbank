@@ -1409,11 +1409,15 @@ export const FAQWrapper = styled.div`
         flex-direction: column;
         gap: 12px;
         flex: 1;
+        .ant-collapse-header {
+          display: flex;
+          flex-direction: row-reverse;
+        }
         .component_faq_collapse_expand_icon {
           transform: rotate(180deg);
           transition: 0.3s ease-in-out;
           position: relative;
-          order: 1;
+          /* order: 1; */
           right: 0;
           &.active {
             transform: rotate(0deg);

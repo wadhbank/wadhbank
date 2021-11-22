@@ -189,7 +189,7 @@ export default function Home({ initialUsers }) {
               </Col>
               <Col span={24}>
                 <Col className="component_subtitle">
-                  Combining latest blockchain technologies and islamic financial
+                  Combining latest blockchain technology and islamic financial
                   guidelines to deliver safe and secure islamic banking service
                   through mobile platform.
                 </Col>
@@ -315,8 +315,7 @@ export default function Home({ initialUsers }) {
                     needs.
                   </Col>
                   <Col span={24} className="component_about_base_subtitle">
-                    With WadhBank, you can bank everywhere around the world just
-                    using our mobile platform.
+                    With WadhBank, you can bank everywhere.
                   </Col>
                   <Col span={24} className="component_about_base_get_more">
                     <Button type="text">Get to know more about WadhBank</Button>
@@ -585,7 +584,7 @@ export default function Home({ initialUsers }) {
               className="component_faq_heading_row"
             >
               <Col span={24} className="component_faq_heading_title">
-                Frequently Asked Question
+                Frequently Asked Questions
               </Col>
               <Col span={24} className="component_faq_heading_subtitle">
                 We know you have some questions in mind, we’ve tried to list the
@@ -861,14 +860,14 @@ export default function Home({ initialUsers }) {
                             span={24}
                             className="component_footer_office_content_title"
                           >
-                            Global Headquarter
+                            Morocco Office
                           </Col>
                           <Col
                             span={24}
                             className="component_footer_office_content_desc"
                           >
-                            2200 Pennsylvania Avenue NW 4th Floor, Washington,
-                            D.C 20037
+                            Mahaj Ryad Center Bureaux 5th floor, Building 7,
+                            Rabat 10100, Morocco
                           </Col>
                         </Row>
                       </Col>
