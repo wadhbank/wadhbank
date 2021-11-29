@@ -1,3 +1,4 @@
+
 import { useRef, useState } from "react";
 import { Prisma } from "prisma";
 import { Col, Row, Input, Collapse, message } from "antd";
@@ -759,21 +760,21 @@ export default function Home({ initialUsers }) {
                               </Col>
                             </Row>
                           </Col>
-                          <Col className="component_footer_base_contact_content">
+                          {/* <Col className="component_footer_base_contact_content">
                             <Row
                               gutter={8}
                               wrap
                               align="bottom"
                               className="component_footer_base_contact_content_row"
                             >
-<!--                               <Col className="component_footer_base_contact_content_icon">
+                           <Col className="component_footer_base_contact_content_icon">
                                 <IconPhone viewBox="0 0 20 20" />
                               </Col>
                               <Col className="component_footer_base_contact_content_label">
                                 646-397-9255
-                              </Col> -->
+                              </Col>
                             </Row>
-                          </Col>
+                          </Col> */}
                         </Row>
                       </Col>
                       <Col className="component_footer_base_social_media">
@@ -945,9 +946,9 @@ export default function Home({ initialUsers }) {
                           <Col className="component_footer_resources_content_list_item">
                             Financial Reports
                           </Col>
-<!--                           <Col className="component_footer_resources_content_list_item">
+                            {/* <Col className="component_footer_resources_content_list_item">
                             Private
-                          </Col> -->
+                          </Col>  */}
                         </Row>
                       </Col>
                     </Row>
