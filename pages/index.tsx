@@ -766,12 +766,12 @@ export default function Home({ initialUsers }) {
                               align="bottom"
                               className="component_footer_base_contact_content_row"
                             >
-                              <Col className="component_footer_base_contact_content_icon">
+<!--                               <Col className="component_footer_base_contact_content_icon">
                                 <IconPhone viewBox="0 0 20 20" />
                               </Col>
                               <Col className="component_footer_base_contact_content_label">
                                 646-397-9255
-                              </Col>
+                              </Col> -->
                             </Row>
                           </Col>
                         </Row>
@@ -843,7 +843,7 @@ export default function Home({ initialUsers }) {
                             span={24}
                             className="component_footer_office_content_title"
                           >
-                            Global Headquarter
+                            Global Headquarters
                           </Col>
                           <Col
                             span={24}
@@ -894,7 +894,7 @@ export default function Home({ initialUsers }) {
                             Shariah Board
                           </Col>
                           <Col className="component_footer_company_content_list_item">
-                            Career
+                            Careers
                           </Col>
                           <Col className="component_footer_company_content_list_item">
                             Contact Us
@@ -934,20 +934,20 @@ export default function Home({ initialUsers }) {
                       <Col className="component_footer_resources_content">
                         <Row className="component_footer_resources_content_list">
                           <Col className="component_footer_resources_content_list_item">
-                            Personal
+                            Market Research
                           </Col>
                           <Col className="component_footer_resources_content_list_item">
-                            Business
+                            Financial Calculators
                           </Col>
                           <Col className="component_footer_resources_content_list_item">
-                            Student
+                            FAQs
                           </Col>
                           <Col className="component_footer_resources_content_list_item">
-                            Career
+                            Financial Reports
                           </Col>
-                          <Col className="component_footer_resources_content_list_item">
+<!--                           <Col className="component_footer_resources_content_list_item">
                             Private
-                          </Col>
+                          </Col> -->
                         </Row>
                       </Col>
                     </Row>
